@@ -265,6 +265,23 @@
     .panel { background: var(--paper-2); border: 1px solid var(--border); border-radius: 16px; padding: 15px; }
     .panel h3 { margin: 0 0 5px; font-size: 1.12rem; }
     .panel p { margin: 0; color: var(--muted); font-size: .83rem; }
+    .stay-grid { display: grid; gap: 12px; }
+    .stay-card { overflow: hidden; background: var(--paper-2); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 5px 18px rgba(40,55,58,.05); }
+    .stay-card.priority { border-color: rgba(214,138,46,.68); box-shadow: 0 7px 22px rgba(214,138,46,.12); }
+    .stay-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; padding: 14px 15px 12px; background: linear-gradient(135deg, rgba(23,107,135,.08), rgba(214,138,46,.08)); }
+    .stay-head h3 { margin: 1px 0 2px; font-size: 1.08rem; }
+    .stay-head p { margin: 0; color: var(--muted); font-size: .76rem; }
+    .stay-badge { flex: 0 0 auto; padding: 4px 8px; border-radius: 999px; color: var(--deep-lake); background: rgba(23,107,135,.10); font-size: .7rem; font-weight: 800; }
+    .stay-card.priority .stay-badge { color: #704816; background: rgba(214,138,46,.16); }
+    .stay-options { padding: 0 15px; }
+    .stay-option { padding: 13px 0 14px; }
+    .stay-option + .stay-option { border-top: 1px solid var(--border); }
+    .stay-option-title { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .stay-option-title strong { color: var(--deep-lake); font-size: .9rem; }
+    .stay-price { flex: 0 0 auto; color: var(--autumn); font-weight: 850; font-variant-numeric: tabular-nums; font-size: .88rem; }
+    .stay-option p { margin: 4px 0 0; color: var(--muted); font-size: .78rem; }
+    .stay-choice { margin: 0 15px 15px; padding: 10px 11px; border-radius: 11px; color: #365153; background: #edf5f2; font-size: .78rem; }
+    .stay-choice strong { color: var(--forest); }
     .outfit-list { display: grid; gap: 10px; margin-top: 14px; }
     .outfit-row { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; align-items: center; padding: 10px; border: 1px solid var(--border); border-radius: 12px; background: #fff; }
     .outfit-day { display: grid; gap: 2px; }
@@ -306,7 +323,7 @@
       transform: translateX(-50%);
       width: min(100%, 1080px);
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       padding: 7px 8px calc(7px + var(--safe-bottom));
       border-top: 1px solid rgba(217,210,196,.96);
       background: rgba(255,253,248,.94);
@@ -323,6 +340,7 @@
       .date-rail { padding-left: 28px; padding-right: 28px; }
       .day-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
       .panel-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stay-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
       .outfit-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .form-field.full { grid-column: 1 / -1; }
@@ -347,6 +365,7 @@
       #car-plan .panel-grid.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4mm; }
       #car-plan .panel { break-inside: avoid-page; }
       .day-card, .panel { box-shadow: none; margin: 0 0 4mm; }
+      .stay-card { break-inside: avoid-page; box-shadow: none; }
       .day-card { break-inside: auto; overflow: visible; }
       .panel { break-inside: auto; }
       .day-toggle { break-inside: avoid-page; break-after: avoid-page; padding: 10px 12px; }
@@ -807,6 +826,76 @@
         </div>
       </section>
 
+      <section class="section" id="hotels">
+        <div class="section-heading"><div><div class="section-kicker">Stay shortlist</div><h2>住宿预订清单</h2></div><p>7 处住宿<br>目前均待预订</p></div>
+        <div class="notice"><strong>订房原则：</strong>阿勒泰、禾木和喀纳斯优先位置与景观；乌鲁木齐、布尔津和奎屯优先性价比、停车与顺路。赛里木湖先确认 10 月 4 日允许从哪个门离开，再订同侧住宿，避免夜间折返。</div>
+        <div class="stay-grid">
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>乌鲁木齐机场 / 城北</h3><p>9/25 入住 → 9/27 退房｜2 晚</p></div><span class="stay-badge">性价比</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>汉庭酒店（新天润店）</strong><span class="stay-price">¥351/晚</span></div><p>当前约 ¥701/两晚；满足深夜到达、停车和第二天整备需求。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/urumqi-hotel-detail-134438128/?checkin=2026-09-25&amp;checkout=2026-09-27&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>机场北京北路亚朵</strong><span class="stay-price">¥458/晚</span></div><p>当前约 ¥916/两晚；环境和睡眠体验更稳，比汉庭多约 ¥215。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/urumqi-hotel-detail-133269753/urumqi-international-airport-beijing-north-road-atour-hotel/?checkin=2026-09-25&amp;checkout=2026-09-27&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>汉庭；这一站不为景观溢价。</div>
+          </article>
+
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>阿勒泰市区</h3><p>9/27 入住 → 9/28 退房｜1 晚</p></div><span class="stay-badge">景观优先</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>阿勒泰桔子水晶酒店</strong><span class="stay-price">¥551/晚</span></div><p>价格适中；预订前询问高楼层、山景或河景房，并确认早餐能否打包。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/altay-city-hotel-detail-133203191/altay-crystal-hotel/?checkin=2026-09-27&amp;checkout=2026-09-28&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>阿勒泰万达美华酒店</strong><span class="stay-price">¥997/晚</span></div><p>比桔子水晶多约 ¥446；只有能确认视野明显更好的房型时才考虑。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/altay-city-hotel-detail-110598194/wanda-moments-altay/?checkin=2026-09-27&amp;checkout=2026-09-28&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>桔子水晶；把预算留给禾木和喀纳斯。</div>
+          </article>
+
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>禾木景区内</h3><p>9/28 入住 → 9/30 退房｜连住 2 晚</p></div><span class="stay-badge">核心住宿</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>禾木·舒泊瑞斯酒店</strong><span class="stay-price">¥1,782/晚</span></div><p>当前约 ¥3,564/两晚；确认位于景区内、接驳方式、独立供暖与热水稳定。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-113018495/hemu-surprise-hotel/?checkin=2026-09-28&amp;checkout=2026-09-30&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>禾木一屿·山间民宿</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；后续复查房态，不把“暂无报价”视为确认售罄。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-97390802/tongmu-yiyu-shanjian-bb/?checkin=2026-09-28&amp;checkout=2026-09-30&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>预订优先级：</strong>最高；优先锁可免费取消的景区内连住房。</div>
+          </article>
+
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>喀纳斯老村 / 新村</h3><p>9/30 入住 → 10/2 退房｜连住 2 晚</p></div><span class="stay-badge">核心住宿</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>优哉游哉度假民宿（老村）</strong><span class="stay-price">¥2,919/晚</span></div><p>当前约 ¥5,838/两晚；价格高，但老村位置能换来清晨和傍晚的景区时间。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-70407272/shenshanli-yichuan-villa-holiday-homestay-kanas-old-village/?checkin=2026-09-30&amp;checkout=2026-10-02&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>蓝天山庄（新村店）</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；后续复查，重点确认区间车站距离、暖气与热水。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-5916235/lantian-hotel/?checkin=2026-09-30&amp;checkout=2026-10-02&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>预订优先级：</strong>最高；老村与新村都可以，优先连住、供暖和可取消。</div>
+          </article>
+
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>布尔津县城</h3><p>10/2 入住 → 10/3 退房｜1 晚</p></div><span class="stay-badge">性价比</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>童话边城度假酒店（网红桥店）</strong><span class="stay-price">¥569/晚</span></div><p>当前约 ¥569；价格更低，适合五彩滩后休息，确认停车场和次日出城是否方便。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-121892300/bu-er-jin-tong-hua-bian-cheng-du-jia-jiu-dian/?checkin=2026-10-02&amp;checkout=2026-10-03&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>布尔津夜光城假日酒店</strong><span class="stay-price">¥1,125/晚</span></div><p>当前约 ¥1,125；同为一晚中转，暂不建议多付约 ¥556。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-112413386/bu-er-jin-ye-guang-cheng-jia-ri-jiu-dian/?checkin=2026-10-02&amp;checkout=2026-10-03&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>童话边城。</div>
+          </article>
+
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>奎屯</h3><p>10/3 入住 → 10/4 退房｜1 晚</p></div><span class="stay-badge">性价比</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>新疆润锦国际酒店</strong><span class="stay-price">¥474/晚</span></div><p>当前约 ¥474；满足停车、休息和第二天上高速即可。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/kuytun-hotel-detail-28038565/xinjiang-runjin-international-hotel/?checkin=2026-10-03&amp;checkout=2026-10-04&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>奎屯希尔顿欢朋酒店</strong><span class="stay-price">¥597/晚</span></div><p>当前约 ¥597；比润锦多约 ¥123，若更看重早餐和品牌稳定性可选。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/kuytun-hotel-detail-130794174/hampton-by-hilton-kuitun/?checkin=2026-10-03&amp;checkout=2026-10-04&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>润锦国际。</div>
+          </article>
+
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>赛里木湖同侧住宿</h3><p>10/4 入住 → 10/5 退房｜1 晚</p></div><span class="stay-badge">先定出口</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>龙岭大酒店（赛里木湖店）</strong><span class="stay-price">¥692/晚</span></div><p>当前约 ¥692；只有当天离园方向顺路时选择，不为低价夜间跨门折返。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/huocheng-hotel-detail-6801403/longling-grand-hotel/?checkin=2026-10-04&amp;checkout=2026-10-05&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>西海花园酒店（东门游客中心店）</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；如果确定从东门离开再复查，南门离开则改找温泉县方向。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/bole-hotel-detail-133580597/xihai-garden-hotel/?checkin=2026-10-04&amp;checkout=2026-10-05&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>暂不锁定；先确认国庆当天出口和二次入园规则。</div>
+          </article>
+        </div>
+        <div class="notice"><strong>价格快照：</strong>2026/8/20，Trip.com，1 间房、2 位成人。按当前倾向组合约 ¥12,389/10 晚；其中禾木和喀纳斯约 ¥9,402。价格、早餐、税费与取消规则以后续结算页为准。</div>
+      </section>
+
       <section class="section" id="outfits">
         <div class="section-heading"><div><div class="section-kicker">Daily outfits</div><h2>每日穿搭</h2></div><p>提前配好<br>当天直接穿</p></div>
         <div class="panel">
@@ -917,6 +1006,7 @@
     <nav class="bottom-nav" aria-label="页面主导航">
       <a href="#route-map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 5-3 8 3 5-3v15l-5 3-8-3-5 3Z"/><path d="M8 3v15M16 6v15"/></svg><span>地图</span></a>
       <a href="#days"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v15H4zM8 3v5M16 3v5M4 10h16"/></svg><span>行程</span></a>
+      <a href="#hotels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V5h11v15M15 10h5v10M7 8h2M11 8h1M7 12h2M11 12h1M7 16h2M11 16h1M3 20h18"/></svg><span>住宿</span></a>
       <a href="#navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>导航</span></a>
       <a href="#checklists"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 2 2 4-4M4 14l2 2 4-4M12 7h8M12 14h8M4 21h16"/></svg><span>清单</span></a>
       <a href="#my-info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg><span>我的</span></a>
