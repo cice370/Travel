@@ -130,6 +130,72 @@
     .notice strong { color: #69400c; }
     .notice.danger { background: #fff1ee; border-color: var(--danger); }
 
+    .map-panel {
+      overflow: hidden;
+      padding: 0;
+      background: #eef3ef;
+      border: 1px solid #cbd8d1;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .map-toolbar { display: grid; gap: 12px; padding: 15px 15px 12px; background: rgba(255,253,248,.96); border-bottom: 1px solid var(--border); }
+    .map-toolbar-copy { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
+    .map-toolbar-copy strong { display: block; color: var(--deep-lake); }
+    .map-toolbar-copy small { display: block; margin-top: 2px; color: var(--muted); font-size: .76rem; }
+    .map-day-rail { display: flex; gap: 7px; overflow-x: auto; padding: 2px 1px 4px; scrollbar-width: none; scroll-snap-type: x proximity; }
+    .map-day-rail::-webkit-scrollbar { display: none; }
+    .map-day-button {
+      flex: 0 0 auto;
+      min-width: 46px;
+      min-height: 42px;
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--ink);
+      background: white;
+      font-weight: 800;
+      font-size: .76rem;
+      cursor: pointer;
+      scroll-snap-align: center;
+    }
+    .map-day-button[aria-pressed="true"] { color: white; background: var(--deep-lake); border-color: var(--deep-lake); box-shadow: 0 4px 12px rgba(11,63,80,.18); }
+    .route-map-wrap { position: relative; background: linear-gradient(180deg, #e8f0ec 0%, #f4efe4 100%); }
+    .route-map { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; }
+    .map-grid-line { fill: none; stroke: rgba(54,86,83,.12); stroke-width: 1; stroke-dasharray: 3 7; }
+    .map-contour { fill: none; stroke: rgba(70,96,78,.16); stroke-width: 1.2; }
+    .map-mountain { fill: none; stroke: rgba(117,102,74,.26); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 8; }
+    .map-water { fill: #b9dbe3; stroke: #6398a5; stroke-width: 1.4; }
+    .map-region-label { fill: rgba(34,62,59,.48); font-size: 19px; font-family: "STSong", "Songti SC", serif; letter-spacing: .08em; }
+    .route-underlay { fill: none; stroke: rgba(255,255,255,.88); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+    .route-segment { fill: none; stroke: var(--route-color, var(--lake)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: .16; transition: opacity .18s ease, stroke-width .18s ease; }
+    .route-segment.is-active { opacity: .94; stroke-width: 5.5; }
+    .route-flight { stroke-dasharray: 8 8; }
+    .map-stop-dot { fill: var(--paper-2); stroke: var(--deep-lake); stroke-width: 3; }
+    .map-stop.major .map-stop-dot { fill: var(--autumn); }
+    .map-stop text { fill: var(--ink); font-size: 14px; font-weight: 800; paint-order: stroke; stroke: rgba(255,253,248,.94); stroke-width: 4px; stroke-linejoin: round; }
+    .map-day-marker { fill: transparent; stroke: transparent; stroke-width: 4; transform-box: fill-box; transform-origin: center; }
+    .map-day-marker.is-active { fill: rgba(214,138,46,.18); stroke: var(--autumn); animation: map-pulse 1.8s ease-out infinite; }
+    .map-attribution { position: absolute; right: 8px; bottom: 6px; padding: 2px 5px; border-radius: 5px; color: #4f6466; background: rgba(255,255,255,.78); font-size: .58rem; }
+    .map-attribution a { color: inherit; }
+    .map-summary { display: grid; gap: 4px; padding: 13px 15px 15px; background: var(--paper-2); border-top: 1px solid var(--border); }
+    .map-summary strong { color: var(--deep-lake); }
+    .map-summary span { color: var(--muted); font-size: .82rem; }
+    .map-legend-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+    .map-legend-item { display: grid; grid-template-columns: 31px minmax(0, 1fr); gap: 8px; align-items: start; padding: 9px 10px; border: 1px solid var(--border); border-radius: 11px; background: var(--paper-2); font-size: .76rem; }
+    .map-legend-item b { color: var(--deep-lake); }
+    .map-legend-item span { color: var(--muted); }
+    @keyframes map-pulse { 0% { transform: scale(.75); opacity: 1; } 75%, 100% { transform: scale(1.7); opacity: 0; } }
+
+    @media (max-width: 479px) {
+      .map-toolbar-copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+      .map-toolbar-copy .secondary-button { min-width: 72px; padding-inline: 9px; }
+      .map-stop text { font-size: 21px; stroke-width: 7px; }
+      .map-region-label { font-size: 26px; }
+      .route-segment { stroke-width: 6; }
+      .route-segment.is-active { stroke-width: 7; }
+      .map-legend-grid { grid-template-columns: 1fr; }
+    }
+
     .day-list { display: grid; gap: 12px; }
     .day-card { overflow: hidden; background: var(--paper-2); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 5px 18px rgba(40,55,58,.05); scroll-margin-top: 18px; }
     .day-toggle { width: 100%; border: 0; color: inherit; background: transparent; padding: 17px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; text-align: left; cursor: pointer; }
@@ -199,6 +265,23 @@
     .panel { background: var(--paper-2); border: 1px solid var(--border); border-radius: 16px; padding: 15px; }
     .panel h3 { margin: 0 0 5px; font-size: 1.12rem; }
     .panel p { margin: 0; color: var(--muted); font-size: .83rem; }
+    .stay-grid { display: grid; gap: 12px; }
+    .stay-card { overflow: hidden; background: var(--paper-2); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 5px 18px rgba(40,55,58,.05); }
+    .stay-card.priority { border-color: rgba(214,138,46,.68); box-shadow: 0 7px 22px rgba(214,138,46,.12); }
+    .stay-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; padding: 14px 15px 12px; background: linear-gradient(135deg, rgba(23,107,135,.08), rgba(214,138,46,.08)); }
+    .stay-head h3 { margin: 1px 0 2px; font-size: 1.08rem; }
+    .stay-head p { margin: 0; color: var(--muted); font-size: .76rem; }
+    .stay-badge { flex: 0 0 auto; padding: 4px 8px; border-radius: 999px; color: var(--deep-lake); background: rgba(23,107,135,.10); font-size: .7rem; font-weight: 800; }
+    .stay-card.priority .stay-badge { color: #704816; background: rgba(214,138,46,.16); }
+    .stay-options { padding: 0 15px; }
+    .stay-option { padding: 13px 0 14px; }
+    .stay-option + .stay-option { border-top: 1px solid var(--border); }
+    .stay-option-title { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .stay-option-title strong { color: var(--deep-lake); font-size: .9rem; }
+    .stay-price { flex: 0 0 auto; color: var(--autumn); font-weight: 850; font-variant-numeric: tabular-nums; font-size: .88rem; }
+    .stay-option p { margin: 4px 0 0; color: var(--muted); font-size: .78rem; }
+    .stay-choice { margin: 0 15px 15px; padding: 10px 11px; border-radius: 11px; color: #365153; background: #edf5f2; font-size: .78rem; }
+    .stay-choice strong { color: var(--forest); }
     .outfit-list { display: grid; gap: 10px; margin-top: 14px; }
     .outfit-row { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; align-items: center; padding: 10px; border: 1px solid var(--border); border-radius: 12px; background: #fff; }
     .outfit-day { display: grid; gap: 2px; }
@@ -240,7 +323,7 @@
       transform: translateX(-50%);
       width: min(100%, 1080px);
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       padding: 7px 8px calc(7px + var(--safe-bottom));
       border-top: 1px solid rgba(217,210,196,.96);
       background: rgba(255,253,248,.94);
@@ -257,10 +340,13 @@
       .date-rail { padding-left: 28px; padding-right: 28px; }
       .day-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
       .panel-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stay-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
       .outfit-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .form-field.full { grid-column: 1 / -1; }
       .bottom-nav { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-radius: 18px 18px 0 0; }
+      .map-toolbar { grid-template-columns: minmax(210px, .7fr) minmax(0, 1.3fr); align-items: center; padding: 18px 20px 14px; }
+      .map-legend-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -269,19 +355,37 @@
 
     @media print {
       @page { size: A4; margin: 12mm; }
-      body { background: white; padding: 0; font-size: 9.6pt; }
+      body { background: white; padding: 0; font-size: 9.6pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .shell { max-width: none; }
       .hero { color: var(--ink); background: white; padding: 0 0 8mm; border-bottom: 2px solid var(--deep-lake); }
-      .hero::after, .mode-panel, .date-rail-wrap, .bottom-nav, .day-toggle .chevron, .nav-actions, .screen-only { display: none !important; }
+      .hero::after, .mode-panel, .date-rail-wrap, .bottom-nav, .day-toggle .chevron, .nav-actions, .screen-only, .map-day-rail { display: none !important; }
       main { padding: 0; }
-      .section { margin-top: 8mm; }
+      .section { margin-top: 5mm; }
       .day-list, .panel-grid.two, .form-grid { display: block; }
-      .day-card, .panel { box-shadow: none; break-inside: avoid; margin: 0 0 5mm; }
+      #car-plan .panel-grid.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4mm; }
+      #car-plan .panel { break-inside: avoid-page; }
+      .day-card, .panel { box-shadow: none; margin: 0 0 4mm; }
+      .stay-card { break-inside: avoid-page; box-shadow: none; }
+      .day-card { break-inside: auto; overflow: visible; }
+      .panel { break-inside: auto; }
+      .day-toggle { break-inside: avoid-page; break-after: avoid-page; padding: 10px 12px; }
       .day-details[hidden], .mist-only { display: block !important; }
-      .day-details { border-top: 1px solid var(--border); }
-      .timeline li { padding-bottom: 7px; }
+      .day-details { border-top: 1px solid var(--border); padding: 0 12px 10px; }
+      .section-heading, .route-highlights, .fallback, .check-group, .timeline li { break-inside: avoid-page; }
+      .timeline li { padding-bottom: 5px; }
       .timeline li:not(:last-child)::before { display: none; }
       .text-field, .notes-field { border-color: #aaa; background: white; }
+      #route-map { break-before: page; }
+      #route-map .section-heading > p { display: none !important; }
+      #route-map > .notice { display: none !important; }
+      .map-panel { box-shadow: none; break-inside: avoid; }
+      .map-toolbar { display: block; padding: 10px 12px; }
+      .route-map { min-height: 0; }
+      .route-segment { opacity: .9 !important; stroke-width: 4 !important; }
+      .map-day-marker { display: none; }
+      .map-region-label, .map-stop:not(.major) { display: none !important; }
+      .map-stop text { font-size: 22px; font-weight: 700; paint-order: normal; stroke: none; }
+      .map-legend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       a { color: inherit; text-decoration: none; }
     }
   </style>
@@ -293,7 +397,7 @@
       <h1>北疆十一日</h1>
       <p class="dates">9/25 去程｜9/26—10/6 北疆十一日 · 凌晨返港</p>
       <p class="route-line">乌鲁木齐 → 阿勒泰 → 阿禾公路 → 禾木 → 喀纳斯 → 五彩滩 → 世界魔鬼城 → 奎屯 → 赛里木湖 → 乌鲁木齐</p>
-      <div class="hero-meta"><span>禾木 2 晚</span><span>喀纳斯 2 晚</span><span>赛里木湖必去</span><span>约 2,800 km</span><span id="pwa-status" role="status">正在准备离线</span></div>
+      <div class="hero-meta"><span>宋 Pro 已预订</span><span>禾木 2 晚</span><span>喀纳斯 2 晚</span><span>赛里木湖必去</span><span>约 2,800 km</span><span id="pwa-status" role="status">正在准备离线</span></div>
     </header>
 
     <section class="mode-panel" aria-label="作息模式">
@@ -319,6 +423,118 @@
 
     <main>
       <div class="notice"><strong>先说结论：</strong>11 天不再塞那拉提、独库和白哈巴。把时间留给阿勒泰秋色、禾木与喀纳斯双连住，以及赛里木湖完整下午，旅行会好看也不会每天都在赶路。</div>
+      <div class="notice"><strong>租车已确认：</strong>比亚迪宋 Pro 新能源，9月25日 23:00 取车，10月5日 23:00 还车。全程按“油混长途车”规划，正规充电方便就充，不为充电绕路或等待。</div>
+
+      <section class="section" id="car-plan">
+        <div class="section-heading"><div><div class="section-kicker">Booked car</div><h2>宋 Pro 用车计划</h2></div><p>已预订<br>长途不依赖充电</p></div>
+        <div class="panel-grid two">
+          <div class="panel">
+            <div class="section-kicker">Reservation</div>
+            <h3 style="margin:4px 0 10px">9/25 23:00 → 10/5 23:00</h3>
+            <ul class="source-list">
+              <li><strong>车型：</strong>比亚迪宋 Pro 新能源；实际年份、配置和随车工具以门店交车为准。</li>
+              <li><strong>取车：</strong>航班落地、取行李后立即联系门店报备到店时间；夜间先完成录像与基础验车。</li>
+              <li><strong>还车：</strong>10月5日 22:30 前办完更稳妥，给 23:00 订单截止和凌晨航班留缓冲。</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <div class="section-kicker">Energy rule</div>
+            <h3 style="margin:4px 0 10px">油量决定行程，电量只做加分</h3>
+            <ul class="source-list">
+              <li>普通路段保持至少半箱油；阿禾公路、喀纳斯山区和 500 km 长途日前补满。</li>
+              <li>住宿有正规交流充电位、无需等待时再充；没有就直接使用混动模式，不临时追充电站。</li>
+              <li>低温会缩短纯电续航。导航和到达时间一律按燃油可用、零纯电里程来计划。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="notice"><strong>提车必须确认：</strong>轮胎花纹与生产日期、胎压、补胎液/充气泵或备胎、充电口与随车充、油量与电量、里程、车身玻璃视频、事故与救援电话。</div>
+      </section>
+
+      <section class="section" id="route-map">
+        <div class="section-heading"><div><div class="section-kicker">Route atlas</div><h2>11 日路线地图</h2></div><p>点 D1–D11<br>单独看当天</p></div>
+        <div class="map-panel" id="trip-map-panel" data-active-day="all">
+          <div class="map-toolbar">
+            <div class="map-toolbar-copy"><div><strong>先看总览，再看每天</strong><small>离线概念图 · 路线曲线按道路绘制 · 不含实时封路</small></div><button class="secondary-button screen-only" type="button" data-print>导出 PDF</button></div>
+            <div class="map-day-rail" role="group" aria-label="选择要查看的路线日期">
+              <button class="map-day-button" type="button" data-map-day="all" aria-pressed="true">总览</button>
+              <button class="map-day-button" type="button" data-map-day="1" aria-pressed="false">D1</button>
+              <button class="map-day-button" type="button" data-map-day="2" aria-pressed="false">D2</button>
+              <button class="map-day-button" type="button" data-map-day="3" aria-pressed="false">D3</button>
+              <button class="map-day-button" type="button" data-map-day="4" aria-pressed="false">D4</button>
+              <button class="map-day-button" type="button" data-map-day="5" aria-pressed="false">D5</button>
+              <button class="map-day-button" type="button" data-map-day="6" aria-pressed="false">D6</button>
+              <button class="map-day-button" type="button" data-map-day="7" aria-pressed="false">D7</button>
+              <button class="map-day-button" type="button" data-map-day="8" aria-pressed="false">D8</button>
+              <button class="map-day-button" type="button" data-map-day="9" aria-pressed="false">D9</button>
+              <button class="map-day-button" type="button" data-map-day="10" aria-pressed="false">D10</button>
+              <button class="map-day-button" type="button" data-map-day="11" aria-pressed="false">D11</button>
+            </div>
+          </div>
+          <div class="route-map-wrap">
+            <svg class="route-map" viewBox="0 0 900 600" role="img" aria-labelledby="route-map-title route-map-description">
+              <title id="route-map-title">北疆十一日每日路线总览</title>
+              <desc id="route-map-description">从乌鲁木齐经阿勒泰、禾木、喀纳斯、五彩滩、世界魔鬼城、奎屯、赛里木湖，最后返回乌鲁木齐的自驾路线。</desc>
+              <defs>
+                <linearGradient id="map-land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e4eee8"/><stop offset="1" stop-color="#eee5d6"/></linearGradient>
+                <filter id="route-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#173f45" flood-opacity=".22"/></filter>
+              </defs>
+              <rect width="900" height="600" fill="url(#map-land)"/>
+              <path class="map-grid-line" d="M0 110H900 M0 220H900 M0 330H900 M0 440H900 M0 550H900 M150 0V600 M300 0V600 M450 0V600 M600 0V600 M750 0V600"/>
+              <path class="map-contour" d="M-15 178C78 113 157 154 237 116S397 91 471 124 613 136 688 91 822 68 923 99M-12 273C87 222 150 261 237 215S386 194 470 224 624 242 709 205 839 192 915 225M-20 378C63 333 143 358 225 330S385 309 477 344 634 366 719 332 835 312 923 348"/>
+              <path class="map-mountain" d="M15 505C98 479 166 492 238 463S383 455 455 487 606 504 691 478 816 466 905 491"/>
+              <ellipse class="map-water" cx="120" cy="458" rx="25" ry="15" transform="rotate(-12 120 458)"/>
+              <path class="map-water" d="M687 63c9-9 23-8 30 1-7 4-12 12-16 22-8-3-13-11-14-23Z"/>
+              <path class="map-water" d="M691 197c14-7 25-4 33 7-11 5-19 12-23 21-9-5-12-14-10-28Z"/>
+              <text class="map-region-label" x="348" y="315">准噶尔盆地</text>
+              <text class="map-region-label" x="690" y="34">阿勒泰山</text>
+              <text class="map-region-label" x="55" y="425">博州</text>
+              <text class="map-region-label" x="615" y="280">北疆</text>
+
+              <g filter="url(#route-shadow)" aria-hidden="true">
+                <path class="route-segment" data-route-day="2" style="--route-color:#176b87" d="M741.8 531.1 L740.0 527.6 L742.0 517.2 L748.6 510.2 L749.6 505.1 L756.5 504.1 L746.0 490.4 L740.0 490.0 L738.8 469.6 L726.7 458.8 L722.4 450.1 L720.4 382.8 L724.0 354.5 L731.9 340.4 L733.5 320.8 L737.6 313.0 L737.5 306.2 L741.5 291.3 L735.3 282.3 L732.5 261.2 L738.9 248.8 L739.5 242.9 L732.2 232.9 L734.7 222.2 L719.5 217.7 L717.2 213.0 L711.6 222.0 L721.0 226.3 L728.8 220.9 L740.6 223.1 L749.8 216.2 L753.3 210.6 L767.8 206.3 L777.9 195.8 L780.7 181.1 L788.0 176.8 L793.5 166.2 L796.2 160.0 L791.7 153.7"/>
+                <path class="route-segment" data-route-day="3" style="--route-color:#a85f20" d="M791.7 153.7 L790.6 147.6 L792.2 142.6 L806.3 136.9 L812.4 137.3 L816.3 128.2 L819.5 129.1 L817.6 125.7 L812.2 125.5 L812.6 122.6 L808.6 120.7 L808.1 115.8 L812.6 112.9 L807.7 108.3 L810.1 105.1 L805.6 102.7 L795.8 104.3 L787.2 103.8 L784.4 101.3 L776.2 102.3 L774.9 100.0 L758.1 95.9 L757.0 98.0 L739.7 101.9 L738.1 96.9 L735.7 95.4 L736.6 93.6 L734.6 93.3 L735.9 91.9 L731.4 90.2 L732.5 87.3 L728.8 86.8 L728.3 83.8 L724.1 83.6"/>
+                <path class="route-segment" data-route-day="5" style="--route-color:#3f7554" d="M724.1 83.6 L728.4 83.8 L728.9 86.7 L715.5 88.0 L713.6 91.6 L716.3 92.5 L712.6 95.7 L702.8 97.1 L696.6 92.9 L696.5 90.8"/>
+                <path class="route-segment" data-route-day="7" style="--route-color:#9b4f47" d="M696.5 90.8 L702.7 98.2 L695.1 104.2 L691.1 110.6 L684.0 113.3 L685.1 116.7 L683.1 120.2 L686.5 123.3 L685.7 125.7 L680.9 128.4 L680.2 133.5 L674.3 132.8 L665.6 136.9 L666.5 145.5 L668.9 148.5 L665.1 160.0 L663.8 161.5 L650.8 152.4 L668.3 165.5"/>
+                <path class="route-segment" data-route-day="8" style="--route-color:#6f596d" d="M668.3 165.5 L674.8 170.6 L674.2 178.2 L665.5 182.3 L661.1 200.2 L653.6 211.8 L649.1 213.7 L648.6 219.9 L644.9 221.7 L633.8 236.6 L621.7 241.5 L607.3 254.2 L589.3 264.5 L586.2 276.6 L575.3 301.8 L560.3 312.8 L563.6 314.0 L560.3 312.8 L557.1 314.2 L548.3 326.8 L517.6 339.1 L514.8 347.3 L509.5 352.6 L496.2 358.3 L495.5 360.7 L486.1 365.8 L471.9 379.2 L459.9 415.3 L464.2 424.7 L474.2 432.1 L478.7 454.3 L485.4 452.9 L484.5 457.2 L487.7 458.8 L487.5 462.0 L489.3 462.6"/>
+                <path class="route-segment" data-route-day="9" style="--route-color:#227c88" d="M489.3 462.6 L487.4 462.8 L487.1 466.4 L481.9 467.8 L480.9 472.0 L475.3 471.8 L472.0 476.8 L444.8 478.8 L439.7 476.7 L406.5 481.3 L387.7 473.0 L357.4 470.0 L354.1 465.9 L346.2 462.8 L335.7 463.2 L318.2 457.0 L303.3 456.5 L290.6 453.5 L287.5 458.4 L271.7 463.8 L232.6 465.2 L223.6 463.6 L214.0 457.5 L205.4 455.3 L138.7 458.1 L115.5 446.2 L139.8 458.2 L133.1 464.2 L116.4 468.3 L118.3 471.8"/>
+                <path class="route-segment" data-route-day="10" style="--route-color:#b56b22" d="M118.3 471.8 L116.4 468.3 L133.1 464.2 L138.1 458.7 L153.2 456.6 L158.0 458.4 L169.6 452.3 L173.7 453.1 L176.9 457.0 L190.6 454.9 L205.5 455.3 L214.0 457.5 L224.3 463.8 L254.9 465.6 L262.9 463.1 L271.9 463.8 L287.5 458.4 L290.7 453.5 L303.3 456.5 L318.2 457.0 L335.7 463.2 L346.3 462.8 L354.1 465.9 L357.3 470.0 L387.7 473.0 L406.1 481.3 L439.7 476.7 L444.8 478.8 L470.3 476.6 L505.5 480.5 L514.1 483.2 L542.3 482.8 L548.5 486.4 L576.1 490.7 L586.4 491.3 L597.9 488.7 L621.4 494.6 L649.8 496.7 L667.5 499.9 L699.8 517.7 L719.4 524.5 L725.4 523.6 L735.0 527.7 L738.5 531.4 L741.8 531.1"/>
+                <path class="route-segment route-flight" data-route-day="11" style="--route-color:#364f7a" d="M741.8 531.1 Q820 538 889 585"/>
+              </g>
+
+              <circle class="map-day-marker" data-route-day="1" cx="741.8" cy="531.2" r="14"/>
+              <circle class="map-day-marker" data-route-day="4" cx="724" cy="83.5" r="14"/>
+              <circle class="map-day-marker" data-route-day="6" cx="685" cy="61.8" r="14"/>
+              <g class="map-stop major"><circle class="map-stop-dot" cx="741.8" cy="531.2" r="6"/><text x="751" y="551">乌鲁木齐</text></g>
+              <g class="map-stop"><circle class="map-stop-dot" cx="721.6" cy="396.8" r="4.5"/><text x="731" y="401">克拉美丽</text></g>
+              <g class="map-stop"><circle class="map-stop-dot" cx="702.9" cy="211" r="4.5"/><text x="712" y="206">乌伦古湖</text></g>
+              <g class="map-stop major"><circle class="map-stop-dot" cx="791.7" cy="153.7" r="6"/><text x="801" y="158">阿勒泰</text></g>
+              <g class="map-stop major"><circle class="map-stop-dot" cx="724" cy="83.5" r="6"/><text x="734" y="78">禾木</text></g>
+              <g class="map-stop major"><circle class="map-stop-dot" cx="685" cy="61.8" r="6"/><text x="646" y="52">喀纳斯</text></g>
+              <g class="map-stop"><circle class="map-stop-dot" cx="652.4" cy="153.3" r="4.5"/><text x="603" y="146">五彩滩</text></g>
+              <g class="map-stop major"><circle class="map-stop-dot" cx="668.3" cy="165.5" r="6"/><text x="677" y="181">布尔津</text></g>
+              <g class="map-stop"><circle class="map-stop-dot" cx="561.3" cy="313.7" r="4.5"/><text x="571" y="319">世界魔鬼城</text></g>
+              <g class="map-stop major"><circle class="map-stop-dot" cx="489.3" cy="462.6" r="6"/><text x="477" y="449">奎屯</text></g>
+              <g class="map-stop major"><circle class="map-stop-dot" cx="118.9" cy="457.3" r="6"/><text x="58" y="449">赛里木湖</text></g>
+            </svg>
+            <div class="map-attribution">道路数据 © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a></div>
+          </div>
+          <div class="map-summary" aria-live="polite"><strong id="map-summary-title">全程总览｜约 2,800 km</strong><span id="map-summary-copy">主环线先北上阿勒泰，再沿西侧南下赛里木湖，最后长途返回乌鲁木齐；D4、D6 是景区内慢游日。</span></div>
+        </div>
+        <div class="map-legend-grid" aria-label="每日路线文字版">
+          <div class="map-legend-item"><b>D1</b><span>乌鲁木齐日光复验宋 Pro、采购、休整</span></div>
+          <div class="map-legend-item"><b>D2</b><span>乌鲁木齐 → 克拉美丽 → 乌伦古湖 → 阿勒泰</span></div>
+          <div class="map-legend-item"><b>D3</b><span>阿勒泰 → 小东沟 → 阿禾公路 → 禾木</span></div>
+          <div class="map-legend-item"><b>D4</b><span>禾木村内步行与区间车</span></div>
+          <div class="map-legend-item"><b>D5</b><span>禾木 → 贾登峪 → 喀纳斯</span></div>
+          <div class="map-legend-item"><b>D6</b><span>喀纳斯三湾、观鱼台景区交通</span></div>
+          <div class="map-legend-item"><b>D7</b><span>喀纳斯 → 五彩滩 → 布尔津</span></div>
+          <div class="map-legend-item"><b>D8</b><span>布尔津 → 世界魔鬼城 → 奎屯</span></div>
+          <div class="map-legend-item"><b>D9</b><span>奎屯 → 赛里木湖约 90 km 环湖</span></div>
+          <div class="map-legend-item"><b>D10</b><span>赛里木湖 → 乌鲁木齐还车</span></div>
+          <div class="map-legend-item"><b>D11</b><span>乌鲁木齐 → 香港（凌晨航班）</span></div>
+        </div>
+        <div class="notice"><strong>地图定位：</strong>这是离线行程概念图，帮你理解每天往哪个方向走；实际驾驶仍以高德导航、景区交通组织和当天道路通行为准。</div>
+      </section>
 
       <section class="section" id="days">
         <div class="section-heading"><div><div class="section-kicker">Daily plan</div><h2>逐日时间表</h2></div><p>点开当天<br>照着走即可</p></div>
@@ -329,32 +545,34 @@
             <li><span class="time">14:35–17:50</span><span class="activity"><strong>东方航空 MU204</strong>｜香港机场 T1 → 西安咸阳机场 T5。</span></li>
             <li><span class="time">17:50–19:25</span><span class="activity"><strong>咸阳 T5 中转 1 小时 35 分。</strong>同航站楼衔接，落地后按东航联程指引尽快前往下一登机口。</span></li>
             <li><span class="time">19:25–22:55</span><span class="activity"><strong>东方航空 MU2251</strong>｜西安咸阳机场 T5 → 乌鲁木齐天山机场。</span></li>
-            <li><span class="time">23:00 后</span><span class="activity">取行李后直接入住机场/城北酒店；当晚不取车、不采购，9月26日才是 D1。</span></li>
+            <li><span class="time">23:00 后</span><span class="activity"><strong>取行李后立即联系租车门店。</strong>报备航班实际落地和到店时间，按订单接驳提取已预订的宋 Pro。</span></li>
+            <li><span class="time">23:40–00:30</span><span class="activity">夜间完成车身录像、玻璃与轮胎外观、油量/电量和里程记录；直接入住机场/城北酒店，不再采购。</span></li>
           </ol>
-          <div class="fallback"><strong>中转提醒：</strong>衔接时间不宽裕，第一段延误时优先联系东航中转柜台并服从联程安排。</div>
+          <div class="fallback"><strong>中转提醒：</strong>衔接时间不宽裕，第一段延误时优先联系东航中转柜台；确定晚到乌鲁木齐后，同时联系租车门店保留车辆并确认夜间接驳。</div>
         </div>
         <div class="day-list">
 
           <article class="day-card" id="day-1">
-            <button class="day-toggle" type="button" aria-expanded="true" aria-controls="day-1-details"><span class="day-index">D1</span><span class="day-head"><strong>9/26｜乌鲁木齐</strong><span>取车 · 采购 · 休整｜住乌鲁木齐</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
+            <button class="day-toggle" type="button" aria-expanded="true" aria-controls="day-1-details"><span class="day-index">D1</span><span class="day-head"><strong>9/26｜乌鲁木齐</strong><span>日光复验宋 Pro · 采购 · 休整｜住乌鲁木齐</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-1-details">
               <p class="goal">目标：睡足后把后面十天需要解决的事一次准备好，不安排高强度景点。</p>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
-                <li><span>🚙</span><span><strong>把车和补给一次准备好：</strong>后面阿禾公路、禾木和喀纳斯都不适合临时补漏。</span></li>
+                <li><span>🚙</span><span><strong>宋 Pro 白天二次复验：</strong>夜间不易发现的划痕、玻璃、轮胎和随车工具，今天在日光下重新确认。</span></li>
                 <li><span>🍜</span><span><strong>新疆第一顿：</strong>按酒店位置选附近新疆菜；和田二街/领馆巷只是体力好时的顺路加项。</span></li>
                 <li><span>🗺️</span><span><strong>离线准备：</strong>下载沿途城市地图，并截屏酒店、停车场、景区入口和租车电话。</span></li>
               </ul></div>
+              <div class="notice"><strong>好友攻略里可借鉴的乌市备选：</strong>如果上午提车复验很顺、精神也好，只在“新疆维吾尔自治区博物馆”和“国际大巴扎外观拍照＋和田二街晚餐”中二选一。博物馆至少留 2.5–3 小时，提前从官方渠道预约并带证件；进馆后优先看新疆历史文物与当日标注的镇馆之宝，展厅编号、开放时间以 2026 年通知为准。大巴扎以短停拍照为主，不专门安排纪念品购物。</div>
               <ol class="timeline">
-                <li><span class="time">09:00</span><span class="activity">起床、早餐；联系租车门店确认接驳和次日出发安排。</span></li>
-                <li><span class="time">10:00–11:30</span><span class="activity"><strong>取车验车。</strong>拍车身、轮胎、玻璃、油表和里程；确认备胎/补胎工具、三角牌与灭火器。</span></li>
-                <li><span class="time">11:30–13:00</span><span class="activity">加满油，确认高速缴费方式；下载乌鲁木齐、阿勒泰、布尔津、克拉玛依、博州离线地图。</span></li>
+                <li><span class="time">09:00</span><span class="activity">睡足后起床、早餐；核对订单里的门店、保险、救援电话和 10月5日还车要求。</span></li>
+                <li><span class="time">10:00–11:30</span><span class="activity"><strong>宋 Pro 日光复验。</strong>补拍车身、轮胎、玻璃、油量/电量和里程；确认补胎工具、三角牌、充电口与随车充，并熟悉油箱盖和 EV/HEV 操作。</span></li>
+                <li><span class="time">11:30–13:00</span><span class="activity">按油箱盖标号补满燃油，确认高速缴费方式；有顺路正规充电位才补电，不为充电等待。下载沿途离线地图。</span></li>
                 <li><span class="time">14:00–16:30</span><span class="activity">采购水、面包/能量棒、自热食品、纸巾、垃圾袋、暖宝宝；阿禾公路午餐随车带。</span></li>
                 <li><span class="time">17:30–20:30</span><span class="activity">吃新疆菜；体力好再去和田二街或领馆巷短走，最多 1.5 小时。</span></li>
                 <li><span class="time">21:00–22:30</span><span class="activity">整理证件、充电宝、手电、保暖层和常用药；22:30 前睡。</span></li>
               </ol>
-              <div class="fallback"><strong>昨晚睡得晚：</strong>上午继续休息，取车和采购顺延；市区景点全部可删。<br><strong>优先保证：</strong>验车、加油、补给和充足睡眠。</div>
+              <div class="fallback"><strong>昨晚提车太晚：</strong>上午继续休息，复验和采购顺延；市区景点全部可删。<br><strong>优先保证：</strong>日光复验、补满燃油、补给和充足睡眠，电量多少不影响次日出发。</div>
               <div class="hotel-line"><label class="field-label" for="hotel-1">乌鲁木齐酒店（9/25、9/26 两晚）</label><input class="text-field" id="hotel-1" data-persist="hotel-1" placeholder="机场/城北方向，确认可停车和连住两晚"></div>
-              <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E5%A4%A9%E5%B1%B1%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA&amp;callnative=1">高德：机场</a></div>
+              <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E6%96%B0%E7%96%86%E7%BB%B4%E5%90%BE%E5%B0%94%E8%87%AA%E6%B2%BB%E5%8C%BA%E5%8D%9A%E7%89%A9%E9%A6%86&amp;callnative=1">高德：自治区博物馆</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E6%96%B0%E7%96%86%E5%9B%BD%E9%99%85%E5%A4%A7%E5%B7%B4%E6%89%8E&amp;callnative=1">高德：国际大巴扎</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E5%92%8C%E7%94%B0%E4%BA%8C%E8%A1%97&amp;city=%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E5%B8%82&amp;callnative=1">高德：和田二街</a></div>
             </div>
           </article>
 
@@ -543,6 +761,7 @@
                 <li><span>💙</span><span><strong>赛湖完整下午：</strong>约 90 km 环湖不赶站，月亮湾、点将台、克勒涌珠和日落点是四组主角。</span></li>
                 <li><span>📷</span><span><strong>跟着光线停：</strong>下午人通常较分散；只进合法停车位，不为固定“网红机位”急停。</span></li>
                 <li><span>🌬️</span><span><strong>风比温度更重要：</strong>帽子、手套、防风层随身；10 月不期待花海或一定有天鹅。</span></li>
+                <li><span>🥾</span><span><strong>松树头不是顺手小停：</strong>想徒步就只走半程，约 40 分钟设强制折返点；不把登顶和俯瞰果子沟大桥当作当天必做。</span></li>
               </ul></div>
               <ol class="timeline">
                 <li><span class="time">08:00–09:00</span><span class="activity">起床、早餐、退房；09:00 导航东门游客中心。</span></li>
@@ -552,10 +771,10 @@
                 <li><span class="time">15:15–16:00</span><span class="activity">点将台登高；风大或排队长就在下方观景区。</span></li>
                 <li><span class="time">16:15–17:00</span><span class="activity">克勒涌珠看不冻泉和湖岸，不预设一定有天鹅。</span></li>
                 <li><span class="time">17:20–18:10</span><span class="activity">灯塔/金花紫卉二选一，不期待 10 月仍有夏季花海。</span></li>
-                <li><span class="time">18:30–日落</span><span class="activity">S 弯或松树头压轴；入园后完全服从当天交通组织和单向标识。</span></li>
+                <li><span class="time">18:30–日落</span><span class="activity">S 弯或松树头二选一压轴；选松树头只走半程并在天黑前回到车边，不追求登顶。入园后完全服从当天交通组织和单向标识。</span></li>
                 <li><span class="time">日落后</span><span class="activity">从当天指定出口离开，去同侧住宿；不开无照明湖边小路，也不在夜里绕湖找东门。</span></li>
               </ol>
-              <div class="fallback"><strong>订房关键：</strong>提前向景区和酒店确认国庆当天允许从哪个门离开；若只能南门出，就住南门/温泉县方向，不要日落后折返东门。阴天缩为月亮湾 + 点将台 + 克勒涌珠。<br><strong>优先删：</strong>亲水滩、金花紫卉、长距离登高。</div>
+              <div class="fallback"><strong>订房关键：</strong>提前向景区和酒店确认国庆当天允许从哪个门离开；若只能南门出，就住南门/温泉县方向，不要日落后折返东门。赛湖天气可能突然转风、雨或雪，阴天缩为月亮湾 + 点将台 + 克勒涌珠。<br><strong>优先删：</strong>亲水滩、金花紫卉、长距离登高。好友 7 月攻略中的票价、车辆费和开放时间不带入本计划，国庆前只认景区官方通知。</div>
               <div class="hotel-line"><label class="field-label" for="hotel-9">今晚酒店</label><input class="text-field" id="hotel-9" data-persist="hotel-9" placeholder="按当天出口选东门或南门/温泉县，确认供暖停车"></div>
               <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E6%99%AF%E5%8C%BA%E4%B8%9C%E9%97%A8%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83&amp;callnative=1">高德：赛湖东门游客中心</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E5%9B%BD%E5%AE%B6%E7%BA%A7%E9%A3%8E%E6%99%AF%E5%90%8D%E8%83%9C%E5%8C%BA%28%E5%8D%97%E9%97%A8%29&amp;callnative=1">高德：赛里木湖南门</a></div>
             </div>
@@ -567,7 +786,7 @@
               <p class="goal">目标：早上再看一眼湖，把足够时间留给 550 km 回程。</p>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🌅</span><span><strong>赛湖晨光：</strong>只看住宿附近合法点位，不为二次入园或跨门折返耽误回程。</span></li>
-                <li><span>🛣️</span><span><strong>果子沟沿途景：</strong>高速行车中欣赏即可，停车只进正式服务区/观景区。</span></li>
+                <li><span>🛣️</span><span><strong>果子沟沿途景：</strong>高速行车中欣赏即可，停车只进正式服务区/观景区；不在桥上停车，10 月也不为季节已过的薰衣草绕路。</span></li>
                 <li><span>✈️</span><span><strong>回乌鲁木齐收尾：</strong>今晚必须还车并进入机场，衔接 10月6日 02:05 的返港航班。</span></li>
               </ul></div>
               <ol class="timeline">
@@ -576,8 +795,9 @@
                 <li><span class="time">10:15–10:30</span><span class="activity"><strong>最晚出发线。</strong>加满油，导航乌鲁木齐酒店全名。</span></li>
                 <li><span class="time">13:00–13:45</span><span class="activity">服务区午餐。</span></li>
                 <li><span class="time">16:00–16:20</span><span class="activity">第二次休息、换司机。</span></li>
-                <li><span class="time">18:00–20:00</span><span class="activity">抵达乌鲁木齐；直接晚餐、整理行李并补足合同油位，不再进老城区。</span></li>
-                <li><span class="time">21:30–22:30</span><span class="activity"><strong>最晚完成还车。</strong>保留还车单据，乘接驳前往乌鲁木齐天山机场。</span></li>
+                <li><span class="time">18:00–20:00</span><span class="activity">抵达乌鲁木齐；直接晚餐、整理行李并按合同补足燃油，不再进老城区。是否需要补电只按订单要求执行。</span></li>
+                <li><span class="time">20:00–21:00</span><span class="activity">清空车内物品，拍油量/电量、里程、四角车身、轮胎和内饰视频；提前联系还车门店确认接驳。</span></li>
+                <li><span class="time">21:30–22:30</span><span class="activity"><strong>最晚完成还车。</strong>订单 23:00 截止，保留还车单据和车辆交接照片，乘接驳前往乌鲁木齐天山机场。</span></li>
               </ol>
               <div class="fallback"><strong>雪或高速管制：</strong>立刻取消晨景，尽早返回；不等天气变好。当天不安排博物馆。<br><strong>优先删：</strong>全部赛湖晨景。</div>
               <div class="notice danger"><strong>今晚不住宿：</strong>10月6日 02:05 起飞，10月5日夜间完成还车后直接进机场。</div>
@@ -604,6 +824,76 @@
             </div>
           </article>
         </div>
+      </section>
+
+      <section class="section" id="hotels">
+        <div class="section-heading"><div><div class="section-kicker">Stay shortlist</div><h2>住宿预订清单</h2></div><p>7 处住宿<br>目前均待预订</p></div>
+        <div class="notice"><strong>订房原则：</strong>阿勒泰、禾木和喀纳斯优先位置与景观；乌鲁木齐、布尔津和奎屯优先性价比、停车与顺路。赛里木湖先确认 10 月 4 日允许从哪个门离开，再订同侧住宿，避免夜间折返。</div>
+        <div class="stay-grid">
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>乌鲁木齐机场 / 城北</h3><p>9/25 入住 → 9/27 退房｜2 晚</p></div><span class="stay-badge">性价比</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>汉庭酒店（新天润店）</strong><span class="stay-price">¥351/晚</span></div><p>当前约 ¥701/两晚；满足深夜到达、停车和第二天整备需求。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/urumqi-hotel-detail-134438128/?checkin=2026-09-25&amp;checkout=2026-09-27&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>机场北京北路亚朵</strong><span class="stay-price">¥458/晚</span></div><p>当前约 ¥916/两晚；环境和睡眠体验更稳，比汉庭多约 ¥215。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/urumqi-hotel-detail-133269753/urumqi-international-airport-beijing-north-road-atour-hotel/?checkin=2026-09-25&amp;checkout=2026-09-27&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>汉庭；这一站不为景观溢价。</div>
+          </article>
+
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>阿勒泰市区</h3><p>9/27 入住 → 9/28 退房｜1 晚</p></div><span class="stay-badge">景观优先</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>阿勒泰桔子水晶酒店</strong><span class="stay-price">¥551/晚</span></div><p>价格适中；预订前询问高楼层、山景或河景房，并确认早餐能否打包。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/altay-city-hotel-detail-133203191/altay-crystal-hotel/?checkin=2026-09-27&amp;checkout=2026-09-28&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>阿勒泰万达美华酒店</strong><span class="stay-price">¥997/晚</span></div><p>比桔子水晶多约 ¥446；只有能确认视野明显更好的房型时才考虑。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/altay-city-hotel-detail-110598194/wanda-moments-altay/?checkin=2026-09-27&amp;checkout=2026-09-28&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>桔子水晶；把预算留给禾木和喀纳斯。</div>
+          </article>
+
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>禾木景区内</h3><p>9/28 入住 → 9/30 退房｜连住 2 晚</p></div><span class="stay-badge">核心住宿</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>禾木·舒泊瑞斯酒店</strong><span class="stay-price">¥1,782/晚</span></div><p>当前约 ¥3,564/两晚；确认位于景区内、接驳方式、独立供暖与热水稳定。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-113018495/hemu-surprise-hotel/?checkin=2026-09-28&amp;checkout=2026-09-30&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>禾木一屿·山间民宿</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；后续复查房态，不把“暂无报价”视为确认售罄。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-97390802/tongmu-yiyu-shanjian-bb/?checkin=2026-09-28&amp;checkout=2026-09-30&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>预订优先级：</strong>最高；优先锁可免费取消的景区内连住房。</div>
+          </article>
+
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>喀纳斯老村 / 新村</h3><p>9/30 入住 → 10/2 退房｜连住 2 晚</p></div><span class="stay-badge">核心住宿</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>优哉游哉度假民宿（老村）</strong><span class="stay-price">¥2,919/晚</span></div><p>当前约 ¥5,838/两晚；价格高，但老村位置能换来清晨和傍晚的景区时间。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-70407272/shenshanli-yichuan-villa-holiday-homestay-kanas-old-village/?checkin=2026-09-30&amp;checkout=2026-10-02&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>蓝天山庄（新村店）</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；后续复查，重点确认区间车站距离、暖气与热水。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-5916235/lantian-hotel/?checkin=2026-09-30&amp;checkout=2026-10-02&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>预订优先级：</strong>最高；老村与新村都可以，优先连住、供暖和可取消。</div>
+          </article>
+
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>布尔津县城</h3><p>10/2 入住 → 10/3 退房｜1 晚</p></div><span class="stay-badge">性价比</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>童话边城度假酒店（网红桥店）</strong><span class="stay-price">¥569/晚</span></div><p>当前约 ¥569；价格更低，适合五彩滩后休息，确认停车场和次日出城是否方便。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-121892300/bu-er-jin-tong-hua-bian-cheng-du-jia-jiu-dian/?checkin=2026-10-02&amp;checkout=2026-10-03&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>布尔津夜光城假日酒店</strong><span class="stay-price">¥1,125/晚</span></div><p>当前约 ¥1,125；同为一晚中转，暂不建议多付约 ¥556。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-112413386/bu-er-jin-ye-guang-cheng-jia-ri-jiu-dian/?checkin=2026-10-02&amp;checkout=2026-10-03&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>童话边城。</div>
+          </article>
+
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>奎屯</h3><p>10/3 入住 → 10/4 退房｜1 晚</p></div><span class="stay-badge">性价比</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>新疆润锦国际酒店</strong><span class="stay-price">¥474/晚</span></div><p>当前约 ¥474；满足停车、休息和第二天上高速即可。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/kuytun-hotel-detail-28038565/xinjiang-runjin-international-hotel/?checkin=2026-10-03&amp;checkout=2026-10-04&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>奎屯希尔顿欢朋酒店</strong><span class="stay-price">¥597/晚</span></div><p>当前约 ¥597；比润锦多约 ¥123，若更看重早餐和品牌稳定性可选。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/kuytun-hotel-detail-130794174/hampton-by-hilton-kuitun/?checkin=2026-10-03&amp;checkout=2026-10-04&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>润锦国际。</div>
+          </article>
+
+          <article class="stay-card">
+            <div class="stay-head"><div><h3>赛里木湖同侧住宿</h3><p>10/4 入住 → 10/5 退房｜1 晚</p></div><span class="stay-badge">先定出口</span></div>
+            <div class="stay-options">
+              <div class="stay-option"><div class="stay-option-title"><strong>龙岭大酒店（赛里木湖店）</strong><span class="stay-price">¥692/晚</span></div><p>当前约 ¥692；只有当天离园方向顺路时选择，不为低价夜间跨门折返。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/huocheng-hotel-detail-6801403/longling-grand-hotel/?checkin=2026-10-04&amp;checkout=2026-10-05&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>西海花园酒店（东门游客中心店）</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；如果确定从东门离开再复查，南门离开则改找温泉县方向。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/bole-hotel-detail-133580597/xihai-garden-hotel/?checkin=2026-10-04&amp;checkout=2026-10-05&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
+            </div>
+            <div class="stay-choice"><strong>当前倾向：</strong>暂不锁定；先确认国庆当天出口和二次入园规则。</div>
+          </article>
+        </div>
+        <div class="notice"><strong>价格快照：</strong>2026/8/20，Trip.com，1 间房、2 位成人。按当前倾向组合约 ¥12,389/10 晚；其中禾木和喀纳斯约 ¥9,402。价格、早餐、税费与取消规则以后续结算页为准。</div>
       </section>
 
       <section class="section" id="outfits">
@@ -636,7 +926,7 @@
             <label class="check-item"><input type="checkbox" data-check="book-kanas"><span>喀纳斯景区内 9/30、10/1 连住</span></label>
             <label class="check-item"><input type="checkbox" data-check="book-sayram"><span>赛里木湖东门附近 10/4 一晚</span></label>
             <label class="check-item"><input type="checkbox" data-check="book-other"><span>阿勒泰、布尔津、奎屯与乌鲁木齐酒店</span></label>
-            <label class="check-item"><input type="checkbox" data-check="book-car"><span>燃油 SUV/合适离地间隙，确认轮胎备胎</span></label>
+            <label class="check-item"><input type="checkbox" data-check="book-car" checked><span>宋 Pro 新能源已预订：9/25 23:00—10/5 23:00</span></label>
             <label class="check-item"><input type="checkbox" data-check="book-ticket"><span>关注喀纳斯、禾木与赛湖 2026 国庆票务</span></label>
           </div>
           <div class="panel check-group"><h3>随身景区包</h3>
@@ -649,13 +939,14 @@
           </div>
           <div class="panel check-group"><h3>每天 21:00</h3>
             <label class="check-item"><input type="checkbox" data-check="night-weather"><span>查天气、降雪、风力与道路管制</span></label>
-            <label class="check-item"><input type="checkbox" data-check="night-fuel"><span>普通日半箱以上，山路日前满箱</span></label>
+            <label class="check-item"><input type="checkbox" data-check="night-fuel"><span>普通日燃油半箱以上，阿禾/长途日前满箱</span></label>
+            <label class="check-item"><input type="checkbox" data-check="night-car-charge"><span>有正规交流桩且无需等待才充车；无桩直接跳过</span></label>
             <label class="check-item"><input type="checkbox" data-check="night-map"><span>离线地图 + 酒店/停车场/入口截屏</span></label>
             <label class="check-item"><input type="checkbox" data-check="night-charge"><span>手机、相机、充电宝全部充电</span></label>
             <label class="check-item"><input type="checkbox" data-check="night-hotel"><span>确认次日早餐和接驳时间</span></label>
           </div>
           <div class="panel check-group"><h3>出发前</h3>
-            <label class="check-item"><input type="checkbox" data-check="start-car"><span>轮胎、胎压报警、玻璃水与油量</span></label>
+            <label class="check-item"><input type="checkbox" data-check="start-car"><span>轮胎、胎压报警、玻璃水、燃油与电量</span></label>
             <label class="check-item"><input type="checkbox" data-check="start-food"><span>车内有两人至少一天的水和食物</span></label>
             <label class="check-item"><input type="checkbox" data-check="start-route"><span>核对目的地县市、里程和路线编号</span></label>
             <label class="check-item"><input type="checkbox" data-check="start-dark"><span>预计天黑后到达就立刻删景点</span></label>
@@ -670,6 +961,7 @@
           <div class="form-grid">
             <label class="form-field"><span class="field-label">去程航班（已出票）</span><input class="text-field" data-persist="flight-out" value="9/25 MU204 14:35 香港T1→西安T5；MU2251 19:25→22:55 乌鲁木齐"></label>
             <label class="form-field"><span class="field-label">返程航班（已出票）</span><input class="text-field" data-persist="flight-back" value="10/6 HB8663 02:05 乌鲁木齐→07:25 香港T1"></label>
+            <label class="form-field full"><span class="field-label">租车（已预订）</span><input class="text-field" data-persist="car-booked" value="比亚迪宋 Pro 新能源｜9/25 23:00 取车 → 10/5 23:00 还车"></label>
             <label class="form-field"><span class="field-label">取车门店</span><input class="text-field" data-persist="car-pickup" placeholder="完整门店名、电话"></label>
             <label class="form-field"><span class="field-label">还车门店</span><input class="text-field" data-persist="car-return" placeholder="完整门店名、接驳方式"></label>
             <label class="form-field"><span class="field-label">同行人 / 紧急联系人</span><input class="text-field" data-persist="contact" placeholder="姓名、电话"></label>
@@ -678,7 +970,7 @@
           </div>
           <div class="save-status" id="save-status" role="status" aria-live="polite">修改后自动保存</div>
           <div id="storage-warning" role="alert">当前浏览器不允许本地保存。内容仍可填写，但关闭页面后可能丢失。</div>
-          <div class="nav-actions screen-only"><button class="secondary-button" id="print-guide" type="button">打印 / 导出 PDF</button><button class="secondary-button danger-button" id="reset-data" type="button">清空我的填写</button></div>
+          <div class="nav-actions screen-only"><button class="secondary-button" type="button" data-print>打印 / 导出 PDF</button><button class="secondary-button danger-button" id="reset-data" type="button">清空我的填写</button></div>
         </div>
       </section>
 
@@ -698,6 +990,7 @@
             <li><a href="https://www.xiaohongshu.com/explore/68a5c9c4000000001b03fc78">小红书：国庆喀纳斯两日游</a></li>
             <li><a href="https://www.xiaohongshu.com/explore/6a5ba73400000000110161ec">小红书：喀纳斯自驾停车攻略</a></li>
             <li><a href="https://www.xiaohongshu.com/explore/69f01526000000001e00db32">小红书：赛里木湖按光线选环湖方向</a></li>
+            <li>好友 7 月伊犁攻略截图：仅采用乌鲁木齐市区取舍、赛里木湖天气与徒步强度、果子沟安全观景经验；未采用酒店、票价、营业时间和薰衣草季玩法。</li>
             <li><a href="https://www.xiaohongshu.com/explore/6a6c7190000000002800ad56">小红书：阿禾公路 209 km 路线与补给提醒</a></li>
             <li><a href="https://www.xiaohongshu.com/explore/685c87d2000000001c03537f">小红书：导航小东沟森林公园找阿禾入口</a></li>
             <li><a href="https://big5.mot.gov.cn/gate/big5/www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260508_4205055.html">交通运输部：2026 阿禾公路夏季通行</a></li>
@@ -711,7 +1004,9 @@
     </main>
 
     <nav class="bottom-nav" aria-label="页面主导航">
+      <a href="#route-map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 5-3 8 3 5-3v15l-5 3-8-3-5 3Z"/><path d="M8 3v15M16 6v15"/></svg><span>地图</span></a>
       <a href="#days"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v15H4zM8 3v5M16 3v5M4 10h16"/></svg><span>行程</span></a>
+      <a href="#hotels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V5h11v15M15 10h5v10M7 8h2M11 8h1M7 12h2M11 12h1M7 16h2M11 16h1M3 20h18"/></svg><span>住宿</span></a>
       <a href="#navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>导航</span></a>
       <a href="#checklists"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 2 2 4-4M4 14l2 2 4-4M12 7h8M12 14h8M4 21h16"/></svg><span>清单</span></a>
       <a href="#my-info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg><span>我的</span></a>
@@ -778,6 +1073,35 @@
         document.getElementById('check-progress-text').textContent = done + ' / ' + boxes.length + ' 项已完成';
       }
 
+      const mapDays = {
+        all: ['全程总览｜约 2,800 km', '主环线先北上阿勒泰，再沿西侧南下赛里木湖，最后长途返回乌鲁木齐；D4、D6 是景区内慢游日。'],
+        1: ['D1 · 9/26｜乌鲁木齐', '昨晚已提宋 Pro；今天日光复验、采购、补满燃油和休整，不依赖充电完成后续山区行程。'],
+        2: ['D2 · 9/27｜乌鲁木齐 → 阿勒泰', '约 560–600 km。沿 S21 北上，经克拉美丽和乌伦古湖，全天方向基本向北。'],
+        3: ['D3 · 9/28｜阿勒泰 → 阿禾公路 → 禾木', '约 209 km。先到小东沟，再沿 G681/阿禾公路穿过山地、森林与河谷。'],
+        4: ['D4 · 9/29｜禾木全天', '不驾车转场。村内以步行和区间车为主，路线集中在禾木桥、白桦林与哈登观景台。'],
+        5: ['D5 · 9/30｜禾木 → 贾登峪 → 喀纳斯', '公路约 2 小时，实际为两次换乘日；私家车停在贾登峪，再乘官方交通进景区。'],
+        6: ['D6 · 10/1｜喀纳斯全天', '不驾车转场。观鱼台、神仙湾、月亮湾和卧龙湾依靠景区交通与木栈道串联。'],
+        7: ['D7 · 10/2｜喀纳斯 → 五彩滩 → 布尔津', '门到门约 4–6 小时。先出景区取车，南下五彩滩看日落，再回布尔津住宿。'],
+        8: ['D8 · 10/3｜布尔津 → 世界魔鬼城 → 奎屯', '约 450 km。继续向南，世界魔鬼城是中途停留点，核心是天黑前安全到奎屯。'],
+        9: ['D9 · 10/4｜奎屯 → 赛里木湖环湖', '转场加环湖约 400 km。一路向西到赛湖东门，再按现场单向组织完成约 90 km 环湖。'],
+        10: ['D10 · 10/5｜赛里木湖 → 乌鲁木齐', '约 550–580 km。经果子沟方向返回乌鲁木齐，当晚完成还车并直接进入机场。'],
+        11: ['D11 · 10/6｜乌鲁木齐 → 香港', '02:05 凌晨航班返港。虚线表示飞行方向，已经离开北疆自驾路线范围。']
+      };
+
+      function setMapDay(day) {
+        const resolved = Object.prototype.hasOwnProperty.call(mapDays, day) ? day : 'all';
+        const panel = document.getElementById('trip-map-panel');
+        panel.dataset.activeDay = resolved;
+        document.querySelectorAll('[data-map-day]').forEach(function (button) {
+          button.setAttribute('aria-pressed', String(button.dataset.mapDay === resolved));
+        });
+        document.querySelectorAll('.route-segment, .map-day-marker').forEach(function (route) {
+          route.classList.toggle('is-active', resolved === 'all' ? route.classList.contains('route-segment') : route.dataset.routeDay === resolved);
+        });
+        document.getElementById('map-summary-title').textContent = mapDays[resolved][0];
+        document.getElementById('map-summary-copy').textContent = mapDays[resolved][1];
+      }
+
       readStore();
       store.fields = store.fields || {};
       store.checks = store.checks || {};
@@ -802,7 +1126,7 @@
 
       document.querySelectorAll('[data-check]').forEach(function (box) {
         const key = box.dataset.check;
-        box.checked = Boolean(store.checks[key]);
+        box.checked = Object.prototype.hasOwnProperty.call(store.checks, key) ? Boolean(store.checks[key]) : box.defaultChecked;
         box.addEventListener('change', function () {
           store.checks[key] = box.checked;
           writeStore('清单进度已保存');
@@ -812,15 +1136,21 @@
 
       modeButtons.comfort.addEventListener('click', function () { setMode('comfort', true); });
       modeButtons.mist.addEventListener('click', function () { setMode('mist', true); });
+      document.querySelectorAll('[data-map-day]').forEach(function (button) {
+        button.addEventListener('click', function () { setMapDay(button.dataset.mapDay); });
+      });
       setMode(store.mode, false);
+      setMapDay('all');
       updateProgress();
 
-      document.getElementById('print-guide').addEventListener('click', function () { window.print(); });
+      document.querySelectorAll('[data-print]').forEach(function (button) {
+        button.addEventListener('click', function () { window.print(); });
+      });
       document.getElementById('reset-data').addEventListener('click', function () {
         if (!window.confirm('确定清空航班、酒店、清单和备注吗？此操作无法撤销。')) return;
         store = { fields: {}, checks: {}, mode: 'comfort' };
-        document.querySelectorAll('[data-persist]').forEach(function (field) { field.value = ''; });
-        document.querySelectorAll('[data-check]').forEach(function (box) { box.checked = false; });
+        document.querySelectorAll('[data-persist]').forEach(function (field) { field.value = field.defaultValue; });
+        document.querySelectorAll('[data-check]').forEach(function (box) { box.checked = box.defaultChecked; });
         setMode('comfort', false);
         updateProgress();
         writeStore('已清空我的填写');
