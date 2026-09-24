@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="北疆攻略">
-  <meta name="description" content="2026 年 9 月 27 日至 10 月 7 日北疆 11 日自驾离线旅行手册">
+  <meta name="description" content="2026 年 9 月 25 日出发、9 月 26 日至 10 月 6 日北疆 11 日自驾离线旅行手册">
   <title>北疆十一日｜手机本地离线手册</title>
   <style>
     :root {
@@ -354,7 +354,17 @@
     }
 
     @media print {
-      @page { size: A4; margin: 12mm; }
+      @page { size: A4; margin: 12mm 12mm 16mm; @bottom-center { content: "北疆十一日 · 2026/9/24 版 | " counter(page); font-size: 8pt; color: #596964; } }
+      html { font-size: 14px; }
+      .hero .dates, .hero .route-line { color: var(--ink); }
+      #pwa-status { display: none; }
+      .day-details { line-height: 1.45; }
+      .day-details p { margin: 6px 0; }
+      .day-details .notice { margin: 8px 0; padding: 8px 10px; }
+      .day-details .route-highlights { padding: 8px 10px; margin-bottom: 8px; }
+      .day-details .fallback, .day-details .mist-note { padding: 8px 10px; margin: 8px 0; }
+      .day-details .mini-title { margin-top: 8px; }
+      .day-details .hotel-line { margin-top: 8px; }
       body { background: white; padding: 0; font-size: 9.6pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .shell { max-width: none; }
       .hero { color: var(--ink); background: white; padding: 0 0 8mm; border-bottom: 2px solid var(--deep-lake); }
@@ -366,13 +376,18 @@
       #car-plan .panel { break-inside: avoid-page; }
       .day-card, .panel { box-shadow: none; margin: 0 0 4mm; }
       .stay-card { break-inside: avoid-page; box-shadow: none; }
-      .day-card { break-inside: auto; overflow: visible; }
+      .day-card { break-before: page; break-inside: auto; overflow: visible; }
+      #travel-documents .panel { break-inside: avoid-page; }
+      #car-plan, #hotels, #checklists, #my-info, #sources { break-before: page; }
+      #outfits, #navigation { break-inside: avoid-page; }
       .panel { break-inside: auto; }
       .day-toggle { break-inside: avoid-page; break-after: avoid-page; padding: 10px 12px; }
       .day-details[hidden], .mist-only { display: block !important; }
       .day-details { border-top: 1px solid var(--border); padding: 0 12px 10px; }
       .section-heading, .route-highlights, .fallback, .check-group, .timeline li { break-inside: avoid-page; }
       .timeline li { padding-bottom: 5px; }
+      h3 { break-after: avoid-page; }
+      p { orphans: 3; widows: 3; }
       .timeline li:not(:last-child)::before { display: none; }
       .text-field, .notes-field { border-color: #aaa; background: white; }
       #route-map { break-before: page; }
@@ -424,6 +439,23 @@
     <main>
       <div class="notice"><strong>先说结论：</strong>11 天不再塞那拉提、独库和白哈巴。把时间留给阿勒泰秋色、禾木与喀纳斯双连住，以及赛里木湖完整下午，旅行会好看也不会每天都在赶路。</div>
       <div class="notice"><strong>租车已确认：</strong>比亚迪宋 Pro 新能源，9月25日 23:00 取车，10月5日 23:00 还车。全程按“油混长途车”规划，正规充电方便就充，不为充电绕路或等待。</div>
+
+      <section class="section" id="travel-documents">
+        <div class="section-heading"><div><div class="section-kicker">Travel documents</div><h2>出发前：香港签注与边境通行证</h2></div><p>2026/9/24 整理<br>个人资格及办理结果待确认</p></div>
+        <div class="panel"><h3>9/25 去程与 10/6 回程：分别核对香港入境资格</h3>
+          <p>按普通内地居民从深圳口岸入境香港、再乘机飞回内地的实际路线，应携带有效往来港澳通行证及香港签注；香港前后均为内地，不适用中国护照往来海外的七天过境安排。机票出票成功不等于签注有效。</p>
+          <p><strong>本次需覆盖两次入港：</strong>9/25 深圳 → 香港机场；10/6 乌鲁木齐 → 香港 → 深圳。返回内地后前次访港行程已结束，一次签注不能覆盖本次往返。身份证与订单登记的通行证原件均随身携带。</p>
+          <p><strong>非深户不等于只能办一次：</strong>持有效深圳居住证者，自 2024/12/1 起可申请香港一年多次“一签多行”；没有居住证者，能否在窗口办理两次签注须结合本人条件审核。机器仅显示一次，不代表窗口也只能办一次。</p>
+          <p><strong>出发前完成确认：</strong>核对两人的户籍、深圳居住证状态、通行证有效期、香港签注有效期与剩余次数。已有未用一次签注如何处理，向深圳出入境或 12367 确认；不要假设能直接叠加第二次，也不要把回程依赖于尚未核实的新疆即时续签。</p>
+          <p class="fine-print">官方依据：<a href="https://www.immd.gov.hk/hks/services/visas/overseas-chinese-entry-arrangement.html">香港入境处：内地居民入境及过境安排</a>；<a href="https://www.nia.gov.cn/n741440/n741542/c1686079/content.html">国家移民局：深圳一签多行公告</a>；<a href="https://www.sz.gov.cn/hdjlpt/detail?pid=3067369">深圳公安：居住证持有人办理渠道</a>；<a href="https://www.sz.gov.cn/hdjlpt/detail?pid=2924904">深圳公安：外省人员两次签注答复</a>。不以网友个案替代本人审批结果。</p>
+        </div>
+        <div class="panel"><h3>9/28 阿禾公路与喀纳斯：按既定路线核对边境证件</h3>
+          <p>当前未安排白哈巴。阿勒泰市融媒体中心 2026/5/11 的阿禾公路通行提醒明确说明无需办理边境通行证；禾木、喀纳斯湖、三湾和观鱼台按常规景区路线游览。此判断不包括临时新增的边境点位，9/28 当日临时管制仍须临行确认。</p>
+          <p><strong>若新增白哈巴：</strong>需办理边境通行证，目的地对应新疆维吾尔自治区 → 阿勒泰地区 → 哈巴河县，具体地点填写铁热克提乡白哈巴村。小程序选择器层级未实测，按实际字段填写，不将白哈巴填为布尔津县。</p>
+          <p>年满 16 周岁的内地居民可通过“移民局12367”APP、微信或支付宝小程序申请三个月以内有效的电子边境通行证，免费，网上受理后 3 个工作日内决定是否批准。偕行未满 16 周岁子女的内地居民及港澳台居民等须按官方指南现场办理。</p>
+          <p class="fine-print">来源：<a href="https://ask.aksxw.com/sy/rdxw/xj/202605/t20260511_34373389.html">2026/5/11 阿禾公路通行提醒</a>；<a href="https://www.nia.gov.cn/n741445/n741604/n1787214/c1792376/content.html">2026/7/28 电子边境通行证签发指南</a>。政策疑问可拨打 12367。</p>
+        </div>
+      </section>
 
       <section class="section" id="car-plan">
         <div class="section-heading"><div><div class="section-kicker">Booked car</div><h2>宋 Pro 用车计划</h2></div><p>已预订<br>长途不依赖充电</p></div>
@@ -538,6 +570,7 @@
 
       <section class="section" id="days">
         <div class="section-heading"><div><div class="section-kicker">Daily plan</div><h2>逐日时间表</h2></div><p>点开当天<br>照着走即可</p></div>
+        <div class="notice"><strong>每日票务说明：</strong>以下沿用 2026/9/22 查询的公开票价，按 2 位普通成人＋1 辆 5 座车估算，人数与优惠资格尚待确认。禾木 ¥150＋喀纳斯 ¥460＋五彩滩 ¥90＋魔鬼城 ¥124＋赛湖 ¥260＝暂计 ¥1,084；并非指定出行日期的锁定价或全网最低价。可先预留 ¥1,200–1,300，不含停车、游船、骑马及可能的二次入园费用。国庆库存、跨日返程、酒店含票权益须在下单前确认；各日票务卡附渠道与来源。</div>
         <div class="panel" style="margin-bottom:12px">
           <div class="section-kicker">Booked flights · 9/25</div>
           <h3 style="margin:4px 0 10px">去程航班（不计入 D1）</h3>
@@ -556,6 +589,7 @@
             <button class="day-toggle" type="button" aria-expanded="true" aria-controls="day-1-details"><span class="day-index">D1</span><span class="day-head"><strong>9/26｜乌鲁木齐</strong><span>日光复验宋 Pro · 采购 · 休整｜住乌鲁木齐</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-1-details">
               <p class="goal">目标：睡足后把后面十天需要解决的事一次准备好，不安排高强度景点。</p>
+              <div class="notice" id="tickets-day-1"><h3>出发前购票准备</h3><p>本日休整安排没有需预购的景区票。先检查已订酒店是否含景区门票、区间车或自驾服务；酒店订单本身不等于景区票。</p><p>微信“喀纳斯景区”公众号 / “原行网”购票入口：查看 9/28 禾木、9/30 喀纳斯票种，先确认两处连住 2 晚的区间车返程有效期，再下单。</p><p>省钱比较：官方与携程 / 去哪儿 / 同程只比较同日期、同票种、同退改条件的最终价格；不购买本行程未安排的白哈巴、云霄峰缆车、讲解组合。<a href="https://touch.piao.qunar.com/touch/detail.htm?id=39117">禾木票种与公开报价</a> · <a href="https://touch.piao.qunar.com/touch/detail.htm?id=13107">喀纳斯票种与公开报价</a></p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🚙</span><span><strong>宋 Pro 白天二次复验：</strong>夜间不易发现的划痕、玻璃、轮胎和随车工具，今天在日光下重新确认。</span></li>
                 <li><span>🍜</span><span><strong>新疆第一顿：</strong>按酒店位置选附近新疆菜；和田二街/领馆巷只是体力好时的顺路加项。</span></li>
@@ -571,7 +605,8 @@
                 <li><span class="time">21:00–22:30</span><span class="activity">整理证件、充电宝、手电、保暖层和常用药；22:30 前睡。</span></li>
               </ol>
               <div class="fallback"><strong>昨晚提车太晚：</strong>上午继续休息，复验和采购顺延；市区景点全部可删。<br><strong>优先保证：</strong>日光复验、补满燃油、补给和充足睡眠，电量多少不影响次日出发。</div>
-              <div class="hotel-line"><label class="field-label" for="hotel-1">乌鲁木齐酒店（9/25、9/26 两晚）</label><input class="text-field" id="hotel-1" data-persist="hotel-1" placeholder="机场/城北方向，确认可停车和连住两晚"></div>
+              <div class="hotel-line"><label class="field-label" for="hotel-1">乌鲁木齐酒店（9/25、9/26 两晚）</label><input class="text-field" id="hotel-1" value="全季酒店（乌鲁木齐会展吾悦广场店）｜已预订" readonly></div>
+              <p class="fine-print">会展中街 2999 号；店内免费公共停车场，入口先问前台。<a href="#hotels">查看住宿地址与停车说明</a></p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%85%A8%E5%AD%A3%E9%85%92%E5%BA%97%EF%BC%88%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E4%BC%9A%E5%B1%95%E5%90%BE%E6%82%A6%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&amp;city=%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E5%B8%82&amp;callnative=1">高德：查找全季酒店</a></div>
               <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E6%96%B0%E7%96%86%E7%BB%B4%E5%90%BE%E5%B0%94%E8%87%AA%E6%B2%BB%E5%8C%BA%E5%8D%9A%E7%89%A9%E9%A6%86&amp;callnative=1">高德：自治区博物馆</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E6%96%B0%E7%96%86%E5%9B%BD%E9%99%85%E5%A4%A7%E5%B7%B4%E6%89%8E&amp;callnative=1">高德：国际大巴扎</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E5%92%8C%E7%94%B0%E4%BA%8C%E8%A1%97&amp;city=%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E5%B8%82&amp;callnative=1">高德：和田二街</a></div>
             </div>
           </article>
@@ -580,6 +615,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-2-details"><span class="day-index">D2</span><span class="day-head"><strong>9/27｜乌鲁木齐 → 阿勒泰市</strong><span>约 560–600 km · 含停留 8–10 h｜住阿勒泰</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-2-details" hidden>
               <p class="goal">目标：安全完成最长的北上转场，为阿禾公路保存体力。</p>
+              <div class="notice" id="tickets-day-2"><h3>9/27 · 顺路景点按需购票</h3><p>乌伦古湖黄金海岸为可选项：普通成人门票公开价 ¥35 起 / 人，两人暂计 ¥70；不含游船。确定能按时抵达阿勒泰后，再选 9/27 普通门票并核对可用时间、退改规则。<a href="https://touch.piao.qunar.com/touch/detail.htm?id=507214">黄金海岸售票页</a></p><p>克拉美丽只安排服务区休息与短停；未查到需提前购买的统一入园票，暂不预购娱乐套票。冲沙、骑骆驼等自费项目按现场公示另选。</p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🛣️</span><span><strong>S21 沙漠公路：</strong>沿途本身就是风景，但观景只进正规服务区，不在高速路肩停车。</span></li>
                 <li><span>🏜️</span><span><strong>克拉美丽沙漠公园：</strong>服务区里的顺路小停，晒、风大，控制 30–40 分钟，不专门等日落。</span></li>
@@ -604,6 +640,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-3-details"><span class="day-index">D3</span><span class="day-head"><strong>9/28｜阿禾公路 → 禾木</strong><span>约 209 km · 纯驾 3.5–4.5 h · 游玩 6–8 h｜住禾木</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-3-details" hidden>
               <p class="goal">目标：把阿禾公路当成完整景点，不赶“到禾木再玩半天”。</p>
+              <div class="notice" id="tickets-day-3"><h3>9/28 · 禾木入园购票</h3><p>购买“禾木门票＋禾木门票站至禾木村往返区间车”成人票。公开售票页显示 ¥75 起 / 人，两人暂计 ¥150；未核实 9/28 结算价，不能视作国庆锁定价。<a href="https://touch.piao.qunar.com/touch/detail.htm?id=39117">禾木票种与公开报价</a></p><p>渠道：微信“喀纳斯景区” / “原行网”，或携程 / 去哪儿同票种。订单日期选 9/28，按实际预计到达时间选择可用时段。</p><p>你住禾木新村禾花叶语山庄至 9/30：先向官方确认 9/28 入园、9/30 出园的跨日返程规则；不因住 2 晚就重复买两套票。村内交通适用范围以票种说明为准。</p><p>阿禾公路沿线未查到需预购的统一景区票；途经收费游乐项目不在当前预算内。</p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🏔️</span><span><strong>阿禾公路全天：</strong>高山、峡谷、森林和草原连续切换，沿现场路牌择点，不追求 31 个平台全打卡。</span></li>
                 <li><span>📍</span><span><strong>景观顺序：</strong>小东沟森林公园 → 乌希里克湿地 → 阿克布拉克草场 → 野卡峡/通巴河谷 → 通巴森林 → 托勒海特；从中选择 5–6 处官方停车区。</span></li>
@@ -615,13 +652,14 @@
                 <li><span class="time">09:30–11:30</span><span class="activity">小东沟森林公园 → 乌希里克湿地 → 阿克布拉克草场；前半程择 2–3 处官方停车区，每站 10–20 分钟。</span></li>
                 <li><span class="time">11:30–14:00</span><span class="activity">野卡峡/通巴河谷路段，选择官方停车区吃随车午餐；弯道不抢位、不为野生动物长时间等待。</span></li>
                 <li><span class="time">14:00–16:30</span><span class="activity">通巴森林 → 托勒海特及后半程秋色，择 2–3 站；9月底主要看秋草、森林和雪山，不预设仍有夏季花海。</span></li>
-                <li><span class="time">16:30–18:00</span><span class="activity">到禾木停车/服务区，拍停车场名和车位，换乘后入住老村。</span></li>
+                <li><span class="time">16:30–18:00</span><span class="activity">到禾木停车/服务区，拍停车场名和车位，换乘后前往禾木新村的禾花叶语山庄，具体下车站与接驳向山庄确认。</span></li>
                 <li><span class="time">19:00–21:30</span><span class="activity">体力允许就走禾木桥—河边—老村；晚餐后充电、备帽子手套。</span></li>
               </ol>
               <div class="notice"><strong>时间概念：</strong>纯驾驶约 3.5–4.5 小时；加入 5–6 次停车、午餐、国庆车流和禾木换乘后，按 6–8 小时安排更稳妥。</div>
               <div class="notice danger"><strong>山区当天决策：</strong>9 月底可能因降雪、结冰或落石临时管制。不要驶入草场、不要路边随停、不要夜走。09:00 才出发也能走，但停车减到 3–4 次并取消禾木黄昏。</div>
               <div class="fallback"><strong>B 方案：</strong>封路就按导航经北屯/布尔津前往禾木，取消沿途拍照，只保证天黑前到游客中心。<br><strong>优先删：</strong>禾木当晚散步，绝不删安全余量。</div>
-              <div class="hotel-line"><label class="field-label" for="hotel-3">禾木连住酒店（第 1 晚）</label><input class="text-field" id="hotel-3" data-persist="hotel-3" placeholder="禾木老村，独立供暖、热水稳定"></div>
+              <div class="hotel-line"><label class="field-label" for="hotel-3">禾木连住酒店（第 1 晚）</label><input class="text-field" id="hotel-3" value="禾木禾花叶语山庄｜已预订" readonly></div>
+              <p class="fine-print">新疆布尔津哈纳斯禾木乡禾木新村 161 号；9/28 14:00 后入住；9/30 12:00 前离店。<a href="#hotels">查看停车与取消说明</a></p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E7%A6%BE%E6%9C%A8%E7%A6%BE%E8%8A%B1%E5%8F%B6%E8%AF%AD%E5%B1%B1%E5%BA%84&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找禾木禾花叶语山庄</a></div>
               <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%B0%8F%E4%B8%9C%E6%B2%9F%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD&amp;callnative=1">高德：小东沟森林公园</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E7%A6%BE%E6%9C%A8%E5%81%9C%E8%BD%A6%E5%9C%BA&amp;callnative=1">高德：禾木停车场</a></div>
             </div>
           </article>
@@ -630,6 +668,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-4-details"><span class="day-index">D4</span><span class="day-head"><strong>9/29｜禾木全天</strong><span>村落 · 白桦林 · 哈登观景台｜住禾木</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-4-details" hidden>
               <p class="goal">目标：村落全景 + 白桦林，下午留出休息，不一整天暴走。</p>
+              <div class="notice" id="tickets-day-4"><h3>9/29 · 禾木连住日</h3><p>计划留在景区内活动，沿用已购票及其交通权益；不按住宿天数再买一套。若临时出景区再返回，先向票务确认能否再次入园。</p><p>哈登观景台、禾木桥和白桦林按现有步行路线游览，不加购云霄峰缆车套票。骑马、旅拍、篝火等为可选消费，现场决定。<a href="https://touch.piao.qunar.com/touch/detail.htm?id=39117">禾木票种与公开报价</a></p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🌄</span><span><strong>哈登观景台：</strong>想看炊烟晨雾就早去；不追雾时下午看村落全景更从容。</span></li>
                 <li><span>🚶</span><span><strong>不回头步行：</strong>桥头站 → 禾木桥 → 哈登/后山栈道 → 援疆桥 → 白桦林 → 村委会站。</span></li>
@@ -650,7 +689,8 @@
                 <li><span class="time">15:30–19:00</span><span class="activity">河边或洪巴斯草原轻松走，不再重复爬哈登。</span></li>
               </ol>
               <div class="fallback"><strong>雨雪：</strong>改老村、禾木桥和咖啡馆；结冰不骑车。<br><strong>优先删：</strong>篝火、旅拍、洪巴斯；村落慢走保留。</div>
-              <div class="hotel-line"><label class="field-label" for="hotel-4">禾木连住酒店（第 2 晚）</label><input class="text-field" id="hotel-4" data-persist="hotel-3" placeholder="会自动同步上一晚"></div>
+              <div class="hotel-line"><label class="field-label" for="hotel-4">禾木连住酒店（第 2 晚）</label><input class="text-field" id="hotel-4" value="禾木禾花叶语山庄｜已预订" readonly></div>
+              <p class="fine-print">新疆布尔津哈纳斯禾木乡禾木新村 161 号；9/28 14:00 后入住；9/30 12:00 前离店。<a href="#hotels">查看停车与取消说明</a></p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E7%A6%BE%E6%9C%A8%E7%A6%BE%E8%8A%B1%E5%8F%B6%E8%AF%AD%E5%B1%B1%E5%BA%84&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找禾木禾花叶语山庄</a></div>
               <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E7%A6%BE%E6%9C%A8%E6%A1%A5&amp;callnative=1">高德：禾木桥</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E5%93%88%E7%99%BB%E8%A7%82%E6%99%AF%E5%B9%B3%E5%8F%B0&amp;callnative=1">高德：哈登观景平台</a></div>
             </div>
           </article>
@@ -659,6 +699,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-5-details"><span class="day-index">D5</span><span class="day-head"><strong>9/30｜禾木 → 喀纳斯</strong><span>公路约 2 h，换乘共留 4–5 h｜住喀纳斯</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-5-details" hidden>
               <p class="goal">目标：错开最早换乘，下午只玩湖边，不硬塞三湾和观鱼台。</p>
+              <div class="notice" id="tickets-day-5"><h3>9/30 · 喀纳斯入园购票</h3><p>优先核对“一进门票＋1 次往返区间车”：公开价 ¥230 起 / 人（门票 ¥160＋往返车票 ¥70），两人暂计 ¥460。二进套票公开价 ¥270 / 人，不因住两晚就直接升级。<a href="https://touch.piao.qunar.com/touch/detail.htm?id=13107">喀纳斯票种与公开报价</a></p><p>渠道：微信“喀纳斯景区” / “原行网”，或携程 / 去哪儿；入园日期选 9/30。</p><p>关键核实：你住春和景明至 10/2，中途不出园；购票前问清“一进票是否覆盖 9/30 入园、景区内连住 2 晚、10/2 乘车出园”。仅在明确适用后按一进票购买；返程有效期尚未核实。</p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🚌</span><span><strong>两次换乘日：</strong>禾木出景区、贾登峪进喀纳斯都可能排队，今天不按纯驾车时间估算。</span></li>
                 <li><span>🌊</span><span><strong>喀纳斯湖轻徒步：</strong>老桥 → 湖边 → 游船码头；人多可转岩画方向木栈道，按体力折返。</span></li>
@@ -668,12 +709,13 @@
                 <li><span class="time">08:30–10:00</span><span class="activity">起床、早餐、退房，不再安排完整晨雾。</span></li>
                 <li><span class="time">10:00–11:30</span><span class="activity">乘景区交通回停车场，按照片找车；国庆首日排队可能更久。</span></li>
                 <li><span class="time">11:30–13:30</span><span class="activity"><strong>导航“喀纳斯贾登峪游客服务中心”。</strong>中途不加景点。</span></li>
-                <li><span class="time">13:30–16:00</span><span class="activity">停车、简餐、换乘官方区间车，联系民宿确认接驳点后入住。</span></li>
+                <li><span class="time">13:30–16:00</span><span class="activity">停车、简餐、换乘官方区间车，联系春和景明民宿（喀纳斯景区店）确认接驳点后入住。</span></li>
                 <li><span class="time">16:30–19:15</span><span class="activity">换乘中心/老村 → 老桥 → 湖边木栈道，按体力原路返回。</span></li>
                 <li><span class="time">19:30–20:30</span><span class="activity">早点晚餐；问清次日三湾首班车、观鱼台预约与末班车。</span></li>
               </ol>
-              <div class="fallback"><strong>停车：</strong>首选贾登峪主游客中心地面停车区；搜不到可用“喀纳斯景区贾登峪门票站北停车场”，满位听现场分流。<br><strong>优先删：</strong>湖边徒步后半段。</div>
-              <div class="hotel-line"><label class="field-label" for="hotel-5">喀纳斯连住酒店（第 1 晚）</label><input class="text-field" id="hotel-5" data-persist="hotel-5" placeholder="景区内老村/新村，确认暖气热水和接驳"></div>
+              <div class="fallback"><strong>停车：</strong>已查到高德“喀纳斯景区贾登峪门票站北停车场”地点；作为导航候选，实际入口、开放区域、过夜收费及满位分流以现场为准。<br><strong>优先删：</strong>湖边徒步后半段。</div>
+              <div class="hotel-line"><label class="field-label" for="hotel-5">喀纳斯连住酒店（第 1 晚）</label><input class="text-field" id="hotel-5" value="春和景明民宿（喀纳斯景区店）｜已预订" readonly></div>
+              <p class="fine-print">先在贾登峪停车换乘；民宿地址：哈纳斯村观鱼台路 10 号。<a href="#hotels">查看住宿地址与停车说明</a></p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%96%80%E7%BA%B3%E6%96%AF%E6%99%AF%E5%8C%BA%E8%B4%BE%E7%99%BB%E5%B3%AA%E9%97%A8%E7%A5%A8%E7%AB%99%E5%8C%97%E5%81%9C%E8%BD%A6%E5%9C%BA&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找贾登峪停车点</a><a class="nav-button" href="https://uri.amap.com/search?keyword=%E6%98%A5%E5%92%8C%E6%99%AF%E6%98%8E%E6%B0%91%E5%AE%BF%EF%BC%88%E5%96%80%E7%BA%B3%E6%96%AF%E6%99%AF%E5%8C%BA%E5%BA%97%EF%BC%89&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找民宿位置</a></div>
               <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%96%80%E7%BA%B3%E6%96%AF%E8%B4%BE%E7%99%BB%E5%B3%AA%E6%B8%B8%E5%AE%A2%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83&amp;callnative=1">高德：贾登峪游客中心</a></div>
             </div>
           </article>
@@ -682,6 +724,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-6-details"><span class="day-index">D6</span><span class="day-head"><strong>10/1｜喀纳斯全天</strong><span>三湾 · 观鱼台｜住喀纳斯</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-6-details" hidden>
               <p class="goal">目标：舒适版先看能见度决定观鱼台，下午顺走三湾；晨雾版则先三湾后登高。</p>
+              <div class="notice" id="tickets-day-6"><h3>10/1 · 喀纳斯连住与观鱼台</h3><p>本日不计划出景区，不另按天购买一套喀纳斯入园票；按已确认的票种与村内交通权益游览三湾。</p><p>观鱼台：公开资料对是否另收往返车费有冲突，旧资料为 ¥20 / 人，部分新资料称已包含。暂留两人 ¥40 机动预算，现场 / 原行网确认后再决定，不提前重复付费；开放状态和乘车预约另查。</p><p>游船可选，公开价 ¥120 起 / 人，两人加 ¥240；现有湖边步行安排不需要为此买船票。<a href="https://touch.piao.qunar.com/touch/detail.htm?id=13107">喀纳斯票种与公开报价</a></p><p>赛里木湖 10/4 自驾预约：公告写可提前 3 天预约，今天开始查看“赛里木湖旅游”官方小程序或同程；具体放票时刻未核实，按平台可选日期为准。<a href="https://m.ly.com/scenery_1/detailIntro/?sid=1335">赛湖自驾预约公告</a></p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>👁️</span><span><strong>观鱼台看全景：</strong>晴朗时上午优先，避开午后起云或降温；是否预约以当天规则为准。</span></li>
                 <li><span>🌙</span><span><strong>三湾不回头：</strong>月亮湾下车，沿木栈道顺流走到卧龙湾，约 1.5–2 小时。</span></li>
@@ -702,7 +745,8 @@
                 <li><span class="time">13:30–17:00</span><span class="activity">天气好去观鱼台；云厚则湖边栈道。</span></li>
               </ol>
               <div class="fallback"><strong>坏天气：</strong>取消观鱼台，改正常运营时的游船或湖边栈道；体力弱就三湾只看观景台。<br><strong>优先删：</strong>阴天删观鱼台，三湾保留。</div>
-              <div class="hotel-line"><label class="field-label" for="hotel-6">喀纳斯连住酒店（第 2 晚）</label><input class="text-field" id="hotel-6" data-persist="hotel-5" placeholder="会自动同步上一晚"></div>
+              <div class="hotel-line"><label class="field-label" for="hotel-6">喀纳斯连住酒店（第 2 晚）</label><input class="text-field" id="hotel-6" value="春和景明民宿（喀纳斯景区店）｜已预订" readonly></div>
+              <p class="fine-print">连住原民宿；具体村内公交站与接驳点向民宿确认。<a href="#hotels">查看住宿地址与停车说明</a></p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E6%98%A5%E5%92%8C%E6%99%AF%E6%98%8E%E6%B0%91%E5%AE%BF%EF%BC%88%E5%96%80%E7%BA%B3%E6%96%AF%E6%99%AF%E5%8C%BA%E5%BA%97%EF%BC%89&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找民宿位置</a></div>
               <div class="tag-row"><span class="tag">私家车不能进三湾</span><span class="tag">全程按官方区间车</span><span class="tag">夜间带手电</span></div>
             </div>
           </article>
@@ -711,6 +755,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-7-details"><span class="day-index">D7</span><span class="day-head"><strong>10/2｜喀纳斯 → 五彩滩 → 布尔津</strong><span>门到门约 4–6 h｜住布尔津</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-7-details" hidden>
               <p class="goal">目标：上午给喀纳斯补漏，下午赶到五彩滩看低角度夕阳。</p>
+              <div class="notice" id="tickets-day-7"><h3>10/2 · 离开喀纳斯，购买五彩滩门票</h3><p>上午使用购票时已确认的跨日返程区间车权益离开喀纳斯；不预设再买一套门票。</p><p>五彩滩普通成人门票按 ¥45 / 人参考，两人暂计 ¥90；本次未取得 10/2 可结算报价。可在携程 / 同程或现场核价，确认天气与抵达时间后再买。认准“新疆阿勒泰地区布尔津县五彩滩”，不是北海涠洲岛。<a href="https://m.ly.com/trip/detail/5799516">五彩滩参考价格资料</a></p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🌲</span><span><strong>喀纳斯补漏：</strong>只留老桥或湖边 1 小时，把国庆排队余量留给出景区。</span></li>
                 <li><span>🌈</span><span><strong>五彩滩黄金时段：</strong>按当天日落时间，提前 60–90 分钟入园，不照搬夏季“21:00 日落”。</span></li>
@@ -734,6 +779,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-8-details"><span class="day-index">D8</span><span class="day-head"><strong>10/3｜布尔津 → 世界魔鬼城 → 奎屯</strong><span>约 450 km · 5.5–6.5 h｜住奎屯</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-8-details" hidden>
               <p class="goal">目标：长途南下中看雅丹，但不让它拖累到奎屯的时间。</p>
+              <div class="notice" id="tickets-day-8"><h3>10/3 · 世界魔鬼城</h3><p>买“世界魔鬼城门票＋区间车 / 小火车”成人组合，公开售票价 ¥62 / 人，两人暂计 ¥124。该组合已含车票，不再重复加购；10/3 价格和可用时段以下单页为准。<a href="https://touch.piao.qunar.com/touch/detail_1152700456.html">魔鬼城门票＋区间车售票页</a></p><p>渠道：携程 / 去哪儿等平台核对同票种券后价；选择能覆盖当天停留时间的普通游览组合，不额外搭售娱乐项目。</p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🏜️</span><span><strong>世界魔鬼城：</strong>乘景区交通看雅丹地貌，挑 2–3 站即可，避免每站都下车造成审美疲劳。</span></li>
                 <li><span>🍜</span><span><strong>乌尔禾镇补给：</strong>景区后午餐、加油、上洗手间一次解决，再完成下午转场。</span></li>
@@ -754,9 +800,10 @@
           </article>
 
           <article class="day-card" id="day-9">
-            <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-9-details"><span class="day-index">D9</span><span class="day-head"><strong>10/4｜奎屯 → 赛里木湖环湖</strong><span>约 310 km · 3.5–4.5 h｜住赛湖（按出口选）</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
+            <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-9-details"><span class="day-index">D9</span><span class="day-head"><strong>10/4｜奎屯 → 赛里木湖环湖</strong><span>约 310 km · 3.5–4.5 h｜住潮克星空营地</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-9-details" hidden>
               <p class="goal">目标：中午前后入湖，用下午侧光和日落完成最重要的一次环湖。</p>
+              <div class="notice" id="tickets-day-9"><h3>10/4 · 赛里木湖自驾入园</h3><p>先查潮克星空营地订单是否含门票或车辆服务费；截图没有展示含票权益。确认住宿位置、进出景区方式及 10/5 晨景是否需要二次检票后，再选票。</p><p>按 2 位普通成人＋1 辆 5 座宋 Pro 暂估：门票 ¥70 × 2＋自驾服务费 ¥120 / 车＝¥260。车辆费自 2026/8/20 起按车收取；¥120 不是全车人的门票总价。<a href="https://www1.xinhuanet.com/fortune/20260803/7971ed0547a74c7d8984af4b1d68302f/c.html">自驾按车收费通报</a></p><p>微信官方小程序“赛里木湖旅游”或同程预约，选 10/4、实际车型、人数并填写平台要求的信息；自驾名额仅限预约当天有效。不要沿用旧攻略的按人自驾套票。<a href="https://m.ly.com/scenery_1/detailIntro/?sid=1335">赛湖自驾预约公告</a></p><p>跨夜与再次入园规则待确认：当前预算只按一次入园估算，不能承诺覆盖次日重新进园；不要未经核实购买旧版 48 小时套票。</p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>💙</span><span><strong>赛湖完整下午：</strong>约 90 km 环湖不赶站，月亮湾、点将台、克勒涌珠和日落点是四组主角。</span></li>
                 <li><span>📷</span><span><strong>跟着光线停：</strong>下午人通常较分散；只进合法停车位，不为固定“网红机位”急停。</span></li>
@@ -772,10 +819,11 @@
                 <li><span class="time">16:15–17:00</span><span class="activity">克勒涌珠看不冻泉和湖岸，不预设一定有天鹅。</span></li>
                 <li><span class="time">17:20–18:10</span><span class="activity">灯塔/金花紫卉二选一，不期待 10 月仍有夏季花海。</span></li>
                 <li><span class="time">18:30–日落</span><span class="activity">S 弯或松树头二选一压轴；选松树头只走半程并在天黑前回到车边，不追求登顶。入园后完全服从当天交通组织和单向标识。</span></li>
-                <li><span class="time">日落后</span><span class="activity">从当天指定出口离开，去同侧住宿；不开无照明湖边小路，也不在夜里绕湖找东门。</span></li>
+                <li><span class="time">日落后</span><span class="activity">按事先向潮克星空营地确认的路线返回住宿；16:00 后可入住，停车入口与进出景区方式提前确认，不在夜间绕湖找营地。</span></li>
               </ol>
               <div class="fallback"><strong>订房关键：</strong>提前向景区和酒店确认国庆当天允许从哪个门离开；若只能南门出，就住南门/温泉县方向，不要日落后折返东门。赛湖天气可能突然转风、雨或雪，阴天缩为月亮湾 + 点将台 + 克勒涌珠。<br><strong>优先删：</strong>亲水滩、金花紫卉、长距离登高。好友 7 月攻略中的票价、车辆费和开放时间不带入本计划，国庆前只认景区官方通知。</div>
-              <div class="hotel-line"><label class="field-label" for="hotel-9">今晚酒店</label><input class="text-field" id="hotel-9" data-persist="hotel-9" placeholder="按当天出口选东门或南门/温泉县，确认供暖停车"></div>
+              <div class="hotel-line"><label class="field-label" for="hotel-9">今晚酒店</label><input class="text-field" id="hotel-9" value="赛里木湖潮克星空营地｜已预订" readonly></div>
+              <p class="fine-print">新疆博乐赛里木湖景区游客服务中心向北 3 公里处；10/4 16:00 后入住；10/5 12:00 前离店。<a href="#hotels">查看停车与取消说明</a></p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E6%BD%AE%E5%85%8B%E6%98%9F%E7%A9%BA%E8%90%A5%E5%9C%B0&amp;city=%E5%8D%9A%E4%B9%90%E5%B8%82&amp;callnative=1">高德：查找赛里木湖潮克星空营地</a></div>
               <div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E6%99%AF%E5%8C%BA%E4%B8%9C%E9%97%A8%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83&amp;callnative=1">高德：赛湖东门游客中心</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E5%9B%BD%E5%AE%B6%E7%BA%A7%E9%A3%8E%E6%99%AF%E5%90%8D%E8%83%9C%E5%8C%BA%28%E5%8D%97%E9%97%A8%29&amp;callnative=1">高德：赛里木湖南门</a></div>
             </div>
           </article>
@@ -784,6 +832,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-10-details"><span class="day-index">D10</span><span class="day-head"><strong>10/5｜赛里木湖 → 乌鲁木齐</strong><span>约 550 km · 6.5–8 h｜当晚还车赴机场</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-10-details" hidden>
               <p class="goal">目标：早上再看一眼湖，把足够时间留给 550 km 回程。</p>
+              <div class="notice" id="tickets-day-10"><h3>10/5 · 晨景与返程票务</h3><p>先确认昨日票种、营地位置是否允许今天继续游览或再次入园；不要把“住一晚”当成自动含二次门票。若需重新付费或预约，优先取消晨景，按时返回乌鲁木齐。</p><p>只在住宿附近合法开放点位看晨光时，按实际所在区域规则执行；不默认需额外买票，也不默认免费二次入园。<a href="https://m.ly.com/scenery_1/detailIntro/?sid=1335">赛湖自驾预约公告</a></p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>🌅</span><span><strong>赛湖晨光：</strong>只看住宿附近合法点位，不为二次入园或跨门折返耽误回程。</span></li>
                 <li><span>🛣️</span><span><strong>果子沟沿途景：</strong>高速行车中欣赏即可，停车只进正式服务区/观景区；不在桥上停车，10 月也不为季节已过的薰衣草绕路。</span></li>
@@ -809,6 +858,7 @@
             <button class="day-toggle" type="button" aria-expanded="false" aria-controls="day-11-details"><span class="day-index">D11</span><span class="day-head"><strong>10/6｜乌鲁木齐 → 香港</strong><span>HB8663 · 02:05–07:25｜返程</span></span><span class="chevron" aria-hidden="true">⌄</span></button>
             <div class="day-details" id="day-11-details" hidden>
               <p class="goal">目标：10月5日晚已经完成还车，凌晨直接办理值机、托运并返港。</p>
+              <div class="notice" id="tickets-day-11"><h3>10/6 · 返程日</h3><p><strong>证件：</strong>再次入境香港须有可用的香港签注；不沿用 9/25 已使用的一次签注。<a href="#travel-documents">查看签注核对说明</a>。</p><p>本日为凌晨航班返港，没有新增景区购票安排。未使用的可退景区票，按原订单的退改规则及时处理。</p></div>
               <div class="route-highlights"><h3>今日亮点</h3><ul>
                 <li><span>✈️</span><span><strong>大湾区航空 HB8663：</strong>乌鲁木齐天山机场 02:05 起飞，香港机场 T1 07:25 抵达。</span></li>
                 <li><span>🧾</span><span><strong>随身核对：</strong>证件、登机牌、充电宝和贵重物品不要放进托运行李。</span></li>
@@ -827,16 +877,15 @@
       </section>
 
       <section class="section" id="hotels">
-        <div class="section-heading"><div><div class="section-kicker">Stay shortlist</div><h2>住宿预订清单</h2></div><p>7 处住宿<br>目前均待预订</p></div>
-        <div class="notice"><strong>订房原则：</strong>阿勒泰、禾木和喀纳斯优先位置与景观；乌鲁木齐、布尔津和奎屯优先性价比、停车与顺路。赛里木湖先确认 10 月 4 日允许从哪个门离开，再订同侧住宿，避免夜间折返。</div>
+        <div class="section-heading"><div><div class="section-kicker">Stay shortlist</div><h2>住宿预订清单</h2></div><p>7 处住宿<br>4 处已订 · 3 处待订</p></div>
+        <div class="notice"><strong>订房原则：</strong>阿勒泰、禾木和喀纳斯优先位置与景观；乌鲁木齐、布尔津和奎屯优先性价比、停车与顺路。禾木已订新村的禾花叶语山庄，赛里木湖已订潮克星空营地；提前确认两处住宿的停车入口与接驳 / 进出景区方式，避免夜间找路。</div>
         <div class="stay-grid">
-          <article class="stay-card">
-            <div class="stay-head"><div><h3>乌鲁木齐机场 / 城北</h3><p>9/25 入住 → 9/27 退房｜2 晚</p></div><span class="stay-badge">性价比</span></div>
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>乌鲁木齐 · 会展吾悦广场</h3><p>9/25 入住 → 9/27 退房｜2 晚</p></div><span class="stay-badge">已预订</span></div>
             <div class="stay-options">
-              <div class="stay-option"><div class="stay-option-title"><strong>汉庭酒店（新天润店）</strong><span class="stay-price">¥351/晚</span></div><p>当前约 ¥701/两晚；满足深夜到达、停车和第二天整备需求。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/urumqi-hotel-detail-134438128/?checkin=2026-09-25&amp;checkout=2026-09-27&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
-              <div class="stay-option"><div class="stay-option-title"><strong>机场北京北路亚朵</strong><span class="stay-price">¥458/晚</span></div><p>当前约 ¥916/两晚；环境和睡眠体验更稳，比汉庭多约 ¥215。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/urumqi-hotel-detail-133269753/urumqi-international-airport-beijing-north-road-atour-hotel/?checkin=2026-09-25&amp;checkout=2026-09-27&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>全季酒店（乌鲁木齐会展吾悦广场店）</strong></div><p>大床房（电视投屏＋拾趣茶具＋小冰箱）｜1 间</p><p>深夜抵达，提前联系酒店确认保留房间。</p><p><strong>地址：</strong>新疆乌鲁木齐市水磨沟区会展中街 2999 号。</p><p><strong>停车：</strong>携程 / Trip.com 列有店内免费公共停车场；独立入口位置未查到。先导航酒店，抵达前致电 <a href="tel:09913516666">0991-3516666</a> 确认入口、深夜入场及车牌登记方式。请核对完整店名与门牌号。</p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%85%A8%E5%AD%A3%E9%85%92%E5%BA%97%EF%BC%88%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E4%BC%9A%E5%B1%95%E5%90%BE%E6%82%A6%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&amp;city=%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E5%B8%82&amp;callnative=1">高德：查找全季酒店</a><a class="secondary-button" href="https://m.ctrip.com/html5/hotel/hoteldetail/119078646.html">地址与设施来源</a></div><p class="fine-print">2026/9/22 查询；高德按钮为地点搜索，请核对名称与地址后启动导航。</p></div>
             </div>
-            <div class="stay-choice"><strong>当前倾向：</strong>汉庭；这一站不为景观溢价。</div>
+            <div class="stay-choice"><strong>预订成功：</strong>已按订单截图确认；房费、早餐及取消规则以订单详情为准。</div>
           </article>
 
           <article class="stay-card priority">
@@ -849,21 +898,17 @@
           </article>
 
           <article class="stay-card priority">
-            <div class="stay-head"><div><h3>禾木景区内</h3><p>9/28 入住 → 9/30 退房｜连住 2 晚</p></div><span class="stay-badge">核心住宿</span></div>
-            <div class="stay-options">
-              <div class="stay-option"><div class="stay-option-title"><strong>禾木·舒泊瑞斯酒店</strong><span class="stay-price">¥1,782/晚</span></div><p>当前约 ¥3,564/两晚；确认位于景区内、接驳方式、独立供暖与热水稳定。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-113018495/hemu-surprise-hotel/?checkin=2026-09-28&amp;checkout=2026-09-30&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
-              <div class="stay-option"><div class="stay-option-title"><strong>禾木一屿·山间民宿</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；后续复查房态，不把“暂无报价”视为确认售罄。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-97390802/tongmu-yiyu-shanjian-bb/?checkin=2026-09-28&amp;checkout=2026-09-30&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
-            </div>
-            <div class="stay-choice"><strong>预订优先级：</strong>最高；优先锁可免费取消的景区内连住房。</div>
+            <div class="stay-head"><div><h3>禾木新村</h3><p>9/28 入住 → 9/30 退房｜2 晚</p></div><span class="stay-badge">已预订</span></div>
+            <div class="stay-options"><div class="stay-option"><div class="stay-option-title"><strong>禾木禾花叶语山庄</strong></div><p>独栋大床房｜1 间 · 2 晚</p><p><strong>入住 / 离店：</strong>9/28 14:00 后入住；9/30 12:00 前离店。</p><p><strong>订单地址：</strong>新疆布尔津哈纳斯禾木乡禾木新村 161 号。</p><p><strong>停车与到店：</strong>截图列有免费停车设施；车辆能否进村、实际停车点及接驳站未确认，到店前通过订单联系山庄。按禾木停车换乘安排，不将山庄定位视为自驾入园许可。</p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E7%A6%BE%E6%9C%A8%E7%A6%BE%E8%8A%B1%E5%8F%B6%E8%AF%AD%E5%B1%B1%E5%BA%84&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找禾木禾花叶语山庄</a></div><p class="fine-print">来源：用户提供的预订截图；导航为名称搜索，请核对订单地址后使用。</p></div></div>
+            <div class="stay-choice"><strong>取消规则：</strong>截图未显示取消规则，以订单详情为准。</div>
           </article>
 
           <article class="stay-card priority">
-            <div class="stay-head"><div><h3>喀纳斯老村 / 新村</h3><p>9/30 入住 → 10/2 退房｜连住 2 晚</p></div><span class="stay-badge">核心住宿</span></div>
+            <div class="stay-head"><div><h3>喀纳斯</h3><p>9/30 入住 → 10/2 退房｜连住 2 晚</p></div><span class="stay-badge">已预订</span></div>
             <div class="stay-options">
-              <div class="stay-option"><div class="stay-option-title"><strong>优哉游哉度假民宿（老村）</strong><span class="stay-price">¥2,919/晚</span></div><p>当前约 ¥5,838/两晚；价格高，但老村位置能换来清晨和傍晚的景区时间。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-70407272/shenshanli-yichuan-villa-holiday-homestay-kanas-old-village/?checkin=2026-09-30&amp;checkout=2026-10-02&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
-              <div class="stay-option"><div class="stay-option-title"><strong>蓝天山庄（新村店）</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；后续复查，重点确认区间车站距离、暖气与热水。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/burqin-hotel-detail-5916235/lantian-hotel/?checkin=2026-09-30&amp;checkout=2026-10-02&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
+              <div class="stay-option"><div class="stay-option-title"><strong>春和景明民宿（喀纳斯景区店）</strong></div><p>雨眠｜山景双床房（洗衣机＋智能卫浴＋沙发＋干湿分离）｜1 间</p><p>到店前确认景区交通与民宿接驳。</p><p><strong>地址：</strong>新疆阿勒泰地区布尔津县哈纳斯村观鱼台路 10 号。</p><p><strong>停车与到店：</strong>平台标注免费停车场，但未核实 9/30 社会车辆能否直达民宿。行程仍按贾登峪停车 → 景区区间车 → 联系民宿确认下车站与接驳安排；民宿位置按钮用于定位，不作为自驾入园许可。</p><p><strong>停车候选：</strong>高德已收录“喀纳斯景区贾登峪门票站北停车场”；当天是否开放、过夜收费及入口以现场分流为准。出发前通过订单联系民宿确认接驳点与供暖。</p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E6%98%A5%E5%92%8C%E6%99%AF%E6%98%8E%E6%B0%91%E5%AE%BF%EF%BC%88%E5%96%80%E7%BA%B3%E6%96%AF%E6%99%AF%E5%8C%BA%E5%BA%97%EF%BC%89&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找民宿位置</a><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%96%80%E7%BA%B3%E6%96%AF%E6%99%AF%E5%8C%BA%E8%B4%BE%E7%99%BB%E5%B3%AA%E9%97%A8%E7%A5%A8%E7%AB%99%E5%8C%97%E5%81%9C%E8%BD%A6%E5%9C%BA&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找贾登峪停车点</a><a class="secondary-button" href="https://m.ctrip.com/html5/hotel/hoteldetail/131770086.html">地址与设施来源</a></div><p class="fine-print">2026/9/22 查询；高德按钮为地点搜索，请核对名称与地址后启动导航。</p></div>
             </div>
-            <div class="stay-choice"><strong>预订优先级：</strong>最高；老村与新村都可以，优先连住、供暖和可取消。</div>
+            <div class="stay-choice"><strong>预订成功：</strong>已按订单截图确认；房费、早餐及取消规则以订单详情为准。</div>
           </article>
 
           <article class="stay-card">
@@ -884,16 +929,13 @@
             <div class="stay-choice"><strong>当前倾向：</strong>润锦国际。</div>
           </article>
 
-          <article class="stay-card">
-            <div class="stay-head"><div><h3>赛里木湖同侧住宿</h3><p>10/4 入住 → 10/5 退房｜1 晚</p></div><span class="stay-badge">先定出口</span></div>
-            <div class="stay-options">
-              <div class="stay-option"><div class="stay-option-title"><strong>龙岭大酒店（赛里木湖店）</strong><span class="stay-price">¥692/晚</span></div><p>当前约 ¥692；只有当天离园方向顺路时选择，不为低价夜间跨门折返。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/huocheng-hotel-detail-6801403/longling-grand-hotel/?checkin=2026-10-04&amp;checkout=2026-10-05&amp;adult=2&amp;children=0&amp;curr=CNY">查看房价</a></div></div>
-              <div class="stay-option"><div class="stay-option-title"><strong>西海花园酒店（东门游客中心店）</strong><span class="stay-price">暂无报价</span></div><p>当前日期未显示可售价格；如果确定从东门离开再复查，南门离开则改找温泉县方向。</p><div class="nav-actions"><a class="secondary-button" href="https://tw.trip.com/hotels/bole-hotel-detail-133580597/xihai-garden-hotel/?checkin=2026-10-04&amp;checkout=2026-10-05&amp;adult=2&amp;children=0&amp;curr=CNY">查看房态</a></div></div>
-            </div>
-            <div class="stay-choice"><strong>当前倾向：</strong>暂不锁定；先确认国庆当天出口和二次入园规则。</div>
+          <article class="stay-card priority">
+            <div class="stay-head"><div><h3>赛里木湖 · 潮克星空营地</h3><p>10/4 入住 → 10/5 退房｜1 晚</p></div><span class="stay-badge">已预订</span></div>
+            <div class="stay-options"><div class="stay-option"><div class="stay-option-title"><strong>赛里木湖潮克星空营地</strong></div><p>房型、间数及成交价未在截图中显示</p><p><strong>入住 / 离店：</strong>10/4 16:00 后入住；10/5 12:00 前离店。</p><p><strong>订单地址：</strong>新疆博乐赛里木湖景区游客服务中心向北 3 公里处。</p><p><strong>停车与到店：</strong>截图列有免费停车设施；具体入口、车位位置及进出景区方式待营地确认。入住前索取定位，结合当天环湖方向安排到店，不再按未订住宿选择出口。</p><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E6%BD%AE%E5%85%8B%E6%98%9F%E7%A9%BA%E8%90%A5%E5%9C%B0&amp;city=%E5%8D%9A%E4%B9%90%E5%B8%82&amp;callnative=1">高德：查找赛里木湖潮克星空营地</a></div><p class="fine-print">来源：用户提供的预订截图；导航为名称搜索，请核对订单地址后使用。</p></div></div>
+            <div class="stay-choice"><strong>取消规则：</strong>截图显示：10/4 14:00 前取消收费 ¥1,096.5；10/4 14:00 后不可取消或修改。截图上方可能还有其他时段，完整规则以订单为准；此金额不是房价。</div>
           </article>
         </div>
-        <div class="notice"><strong>价格快照：</strong>2026/8/20，Trip.com，1 间房、2 位成人。按当前倾向组合约 ¥12,389/10 晚；其中禾木和喀纳斯约 ¥9,402。价格、早餐、税费与取消规则以后续结算页为准。</div>
+        <div class="notice"><strong>价格快照：</strong>2026/8/20，Trip.com，1 间房、2 位成人。未订住宿保留候选报价。乌鲁木齐、禾木、喀纳斯与赛里木湖已更新为已订住宿，截图未显示成交价，暂不汇总全程住宿费用。价格、早餐、税费与取消规则以订单或后续结算页为准。</div>
       </section>
 
       <section class="section" id="outfits">
@@ -908,8 +950,11 @@
       <section class="section" id="navigation">
         <div class="section-heading"><div><div class="section-kicker">Navigation</div><h2>导航卡</h2></div><p>先核对县市<br>再点开始导航</p></div>
         <div class="panel">
+          <div class="nav-card"><span class="nav-date">9/28</span><div class="nav-copy"><strong>禾木禾花叶语山庄</strong><small>新疆布尔津哈纳斯禾木乡禾木新村 161 号；停车入口与到店方式待住宿方确认。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E7%A6%BE%E6%9C%A8%E7%A6%BE%E8%8A%B1%E5%8F%B6%E8%AF%AD%E5%B1%B1%E5%BA%84&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找禾木禾花叶语山庄</a></div></div></div>
+          <div class="nav-card"><span class="nav-date">10/4</span><div class="nav-copy"><strong>赛里木湖潮克星空营地</strong><small>新疆博乐赛里木湖景区游客服务中心向北 3 公里处；停车入口与到店方式待住宿方确认。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E6%BD%AE%E5%85%8B%E6%98%9F%E7%A9%BA%E8%90%A5%E5%9C%B0&amp;city=%E5%8D%9A%E4%B9%90%E5%B8%82&amp;callnative=1">高德：查找赛里木湖潮克星空营地</a></div></div></div>
+          <div class="nav-card"><span class="nav-date">9/25</span><div class="nav-copy"><strong>全季酒店（乌鲁木齐会展吾悦广场店）</strong><small>水磨沟区会展中街 2999 号；免费公共停车场，入口请致电 0991-3516666 确认。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%85%A8%E5%AD%A3%E9%85%92%E5%BA%97%EF%BC%88%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E4%BC%9A%E5%B1%95%E5%90%BE%E6%82%A6%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&amp;city=%E4%B9%8C%E9%B2%81%E6%9C%A8%E9%BD%90%E5%B8%82&amp;callnative=1">高德：查找全季酒店</a></div></div></div>
           <div class="nav-card"><span class="nav-date">9/28</span><div class="nav-copy"><strong>小东沟森林公园 → 禾木停车场</strong><small>确认后续是 G681/阿禾公路，不是 G217；最后 1–3 km 听现场分流。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%B0%8F%E4%B8%9C%E6%B2%9F%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD&amp;callnative=1">打开高德</a></div></div></div>
-          <div class="nav-card"><span class="nav-date">9/30</span><div class="nav-copy"><strong>喀纳斯贾登峪游客服务中心</strong><small>备选：喀纳斯景区贾登峪门票站北停车场；私家车不进村和三湾。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%96%80%E7%BA%B3%E6%96%AF%E8%B4%BE%E7%99%BB%E5%B3%AA%E6%B8%B8%E5%AE%A2%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83&amp;callnative=1">打开高德</a></div></div></div>
+          <div class="nav-card"><span class="nav-date">9/30</span><div class="nav-copy"><strong>喀纳斯贾登峪游客服务中心</strong><small>停车候选：喀纳斯景区贾登峪门票站北停车场（高德已收录）；按现场分流停车换乘，是否可直达民宿须另行确认。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%96%80%E7%BA%B3%E6%96%AF%E8%B4%BE%E7%99%BB%E5%B3%AA%E6%B8%B8%E5%AE%A2%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83&amp;callnative=1">打开高德</a><a class="nav-button" href="https://uri.amap.com/search?keyword=%E5%96%80%E7%BA%B3%E6%96%AF%E6%99%AF%E5%8C%BA%E8%B4%BE%E7%99%BB%E5%B3%AA%E9%97%A8%E7%A5%A8%E7%AB%99%E5%8C%97%E5%81%9C%E8%BD%A6%E5%9C%BA&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找贾登峪停车点</a><a class="nav-button" href="https://uri.amap.com/search?keyword=%E6%98%A5%E5%92%8C%E6%99%AF%E6%98%8E%E6%B0%91%E5%AE%BF%EF%BC%88%E5%96%80%E7%BA%B3%E6%96%AF%E6%99%AF%E5%8C%BA%E5%BA%97%EF%BC%89&amp;city=%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">高德：查找民宿位置</a></div></div></div>
           <div class="nav-card"><span class="nav-date">10/2</span><div class="nav-copy"><strong>五彩滩景区</strong><small>搜索结果必须显示阿勒泰地区布尔津县；不要选广西北海涠洲岛。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E4%BA%94%E5%BD%A9%E6%BB%A9%E6%99%AF%E5%8C%BA&amp;city=%E9%98%BF%E5%8B%92%E6%B3%B0%E5%9C%B0%E5%8C%BA%E5%B8%83%E5%B0%94%E6%B4%A5%E5%8E%BF&amp;callnative=1">打开高德</a></div></div></div>
           <div class="nav-card"><span class="nav-date">10/3</span><div class="nav-copy"><strong>世界魔鬼城</strong><small>应为克拉玛依市乌尔禾区龙脊路 200 号；不要选福海县海上魔鬼城。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E4%B8%96%E7%95%8C%E9%AD%94%E9%AC%BC%E5%9F%8E&amp;city=%E5%85%8B%E6%8B%89%E7%8E%9B%E4%BE%9D%E5%B8%82%E4%B9%8C%E5%B0%94%E7%A6%BE%E5%8C%BA&amp;callnative=1">打开高德</a></div></div></div>
           <div class="nav-card"><span class="nav-date">10/4</span><div class="nav-copy"><strong>赛里木湖景区东门游客中心 → 赛里木湖景区南门</strong><small>不只搜“赛里木湖”；入园后按当天单向与环湖标识行驶。</small><div class="nav-actions"><a class="nav-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E6%99%AF%E5%8C%BA%E4%B8%9C%E9%97%A8%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83&amp;callnative=1">东门</a><a class="secondary-button" href="https://uri.amap.com/search?keyword=%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E6%99%AF%E5%8C%BA%E5%8D%97%E9%97%A8&amp;callnative=1">南门</a></div></div></div>
@@ -922,15 +967,16 @@
         <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="check-progress"></div></div>
         <div class="panel-grid two">
           <div class="panel check-group"><h3>先订这些</h3>
-            <label class="check-item"><input type="checkbox" data-check="book-hemu"><span>禾木老村 9/28、9/29 同一家连住</span></label>
-            <label class="check-item"><input type="checkbox" data-check="book-kanas"><span>喀纳斯景区内 9/30、10/1 连住</span></label>
-            <label class="check-item"><input type="checkbox" data-check="book-sayram"><span>赛里木湖东门附近 10/4 一晚</span></label>
-            <label class="check-item"><input type="checkbox" data-check="book-other"><span>阿勒泰、布尔津、奎屯与乌鲁木齐酒店</span></label>
+            <label class="check-item"><input type="checkbox" data-check="book-hemu-confirmed" checked><span>已订禾木禾花叶语山庄（新村）：9/28—9/30，独栋大床房 1 间 2 晚</span></label>
+            <label class="check-item"><input type="checkbox" data-check="book-kanas-confirmed" checked><span>已订春和景明民宿：9/30 入住、10/2 离店，连住 2 晚</span></label>
+            <label class="check-item"><input type="checkbox" data-check="book-sayram-confirmed" checked><span>已订赛里木湖潮克星空营地：10/4—10/5，1 晚</span></label>
+            <label class="check-item"><input type="checkbox" data-check="book-urumqi-confirmed" checked><span>已订全季酒店（乌鲁木齐会展吾悦广场店）：9/25—9/27，2 晚</span></label>
+            <label class="check-item"><input type="checkbox" data-check="book-other"><span>阿勒泰、布尔津与奎屯酒店</span></label>
             <label class="check-item"><input type="checkbox" data-check="book-car" checked><span>宋 Pro 新能源已预订：9/25 23:00—10/5 23:00</span></label>
-            <label class="check-item"><input type="checkbox" data-check="book-ticket"><span>关注喀纳斯、禾木与赛湖 2026 国庆票务</span></label>
+            <label class="check-item"><input type="checkbox" data-check="book-ticket"><span>核对每日票务卡：酒店含票、禾木 / 喀纳斯连住返程规则、10/4 赛湖车辆预约；尚未标记已购票</span></label>
           </div>
           <div class="panel check-group"><h3>随身景区包</h3>
-            <label class="check-item"><input type="checkbox" data-check="bag-id"><span>身份证、驾驶证、银行卡与少量现金</span></label>
+            <label class="check-item"><input type="checkbox" data-check="bag-id"><span>身份证、往来港澳通行证、覆盖去回两次入港的有效签注、驾驶证、银行卡与少量现金</span></label>
             <label class="check-item"><input type="checkbox" data-check="bag-power"><span>充电宝、充电线、手电/头灯</span></label>
             <label class="check-item"><input type="checkbox" data-check="bag-food"><span>保温杯、能量棒、应急主食</span></label>
             <label class="check-item"><input type="checkbox" data-check="bag-warm"><span>暖宝宝、帽子、手套、薄羽绒</span></label>
@@ -958,6 +1004,10 @@
         <div class="section-heading"><div><div class="section-kicker">My trip</div><h2>我的预订</h2></div><p>只保存在<br>这台设备</p></div>
         <div class="panel">
           <p>直接填航班、租车和联系人。网页关闭后仍会保留；不会上传到网络。</p>
+          <p><strong>全季酒店（乌鲁木齐会展吾悦广场店） · 已预订</strong><br>9/25 入住 → 9/27 退房｜2 晚<br>大床房（电视投屏＋拾趣茶具＋小冰箱）｜1 间</p>
+          <p><strong>春和景明民宿（喀纳斯景区店） · 已预订</strong><br>9/30 入住 → 10/2 退房｜连住 2 晚<br>雨眠｜山景双床房（洗衣机＋智能卫浴＋沙发＋干湿分离）｜1 间</p>
+          <p><strong>禾木禾花叶语山庄 · 已预订</strong><br>9/28 入住 → 9/30 退房｜2 晚<br>独栋大床房｜1 间 · 2 晚<br>9/28 14:00 后入住；9/30 12:00 前离店<br>新疆布尔津哈纳斯禾木乡禾木新村 161 号<br><a href="#hotels">查看停车与取消说明</a></p>
+          <p><strong>赛里木湖潮克星空营地 · 已预订</strong><br>10/4 入住 → 10/5 退房｜1 晚<br>房型、间数及成交价未在截图中显示<br>10/4 16:00 后入住；10/5 12:00 前离店<br>新疆博乐赛里木湖景区游客服务中心向北 3 公里处<br><a href="#hotels">查看停车与取消说明</a></p>
           <div class="form-grid">
             <label class="form-field"><span class="field-label">去程航班（已出票）</span><input class="text-field" data-persist="flight-out" value="9/25 MU204 14:35 香港T1→西安T5；MU2251 19:25→22:55 乌鲁木齐"></label>
             <label class="form-field"><span class="field-label">返程航班（已出票）</span><input class="text-field" data-persist="flight-back" value="10/6 HB8663 02:05 乌鲁木齐→07:25 香港T1"></label>
@@ -997,7 +1047,11 @@
             <li><a href="https://jtyst.xinjiang.gov.cn/xjjtysj/mtkjt/202501/9f76930137cb4957a7f8682524c76558.shtml">新疆交通运输厅：S21 阿乌高速线路资料</a></li>
             <li><a href="https://sailimuhu.org/scenic.html">赛里木湖景区官网：景点与环湖信息</a></li>
             <li><a href="https://www.yujiankanasi.com/">喀纳斯·禾木官方预约平台</a></li>
-          </ul>
+                      <li><a href="https://m.ctrip.com/html5/hotel/hoteldetail/119078646.html">2026/9/22 查询：全季会展吾悦广场店地址与停车设施（携程）</a></li>
+            <li><a href="https://ca.trip.com/hotels/urumqi-hotel-detail-119078646/ji-hotel/">2026/9/22 查询：全季店内免费公共停车场（Trip.com）</a></li>
+            <li><a href="https://m.ctrip.com/html5/hotel/hoteldetail/131770086.html">2026/9/22 查询：春和景明民宿地址与设施（携程；不代表车辆入园许可）</a></li>
+            <li><a href="https://ditu.amap.com/place/B038A0058H">2026/9/22 查询：贾登峪门票站北停车场地点（高德；入口与过夜收费未核实）</a></li>
+</ul>
       <p class="fine-print">请在 9/20 和 9/24 各复核一次：阿禾公路通行、阿勒泰叶色与降雪、景区区间车、赛湖自驾规则。所有时间均为北京时间。</p>
         </div>
       </section>
